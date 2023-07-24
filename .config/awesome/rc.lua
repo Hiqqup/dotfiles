@@ -1,5 +1,4 @@
--- If LuaRocks is installed, make sure that packages installed through it are
--- found (e.g. lgi). If LuaRocks is not installed, do nothing.
+-- If LuaRocks is installed, make sure that packages installed through it are found (e.g. lgi). If LuaRocks is not installed, do nothing.
 pcall(require, "luarocks.loader")
 
 -- Standard awesome library
@@ -248,7 +247,10 @@ root.buttons(gears.table.join(
 
 -- {{{ Key bindings
 globalkeys = gears.table.join(
-    awful.key({ modkey , "Mod4"}, "3", function () awful.util.spawn_with_shell("google-chrome &") end),
+    awful.key({  "Mod4"}, "3", function () awful.util.spawn_with_shell("google-chrome &") end),
+    awful.key({  "Mod4"}, "2", function () awful.util.spawn_with_shell("alacritty &") end),
+    awful.key({ "Mod4"}, "1", function () awful.util.spawn_with_shell("rofi -show drun &") end),
+    awful.key({ "Mod4"}, "4", function () awful.util.spawn_with_shell("obsidian &") end),
     awful.key({ modkey,           }, "s",      hotkeys_popup.show_help,
               {description="show help", group="awesome"}),
     awful.key({ modkey,           }, "Left",   awful.tag.viewprev,
@@ -590,18 +592,8 @@ beautiful.useless_gap=15
 --os.execute("~/.fehbg &")
 awful.spawn.with_shell("~/.fehbg &")
 awful.spawn.with_shell("picom &")
-awful.spawn.with_shell("xrandr --output 'HDMI-0' --auto --output 'DVI-D-0' --right-of 'HDMI-0'")
-
-autorun = true
-autorunApps =
-{
-	"google-chrome",
-	terminal,
-}
-if autorun then
-   for app = 1, #autorunApps do
-       awful.util.spawn(autorunApps[app])
-   end
-end
+awful.spawn.with_shell("xrandr --output 'HDMI-0' --auto --output 'DVI-D-0' --right-of 'HDMI-0' &")
+awful.spawn.with_shell("xsetwacom set 17 MapToOutput 1920x1080+0+0 &")
+awful.spawn.with_shell("xsetwacom set 17 Rotate half &")
 
 
