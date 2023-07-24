@@ -4,6 +4,6 @@
 /usr/bin/git --git-dir=$HOME/dotfiles/ --work-tree=$HOME add $HOME/.config/neofetch
 /usr/bin/git --git-dir=$HOME/dotfiles/ --work-tree=$HOME add $HOME/.config/alacritty.yml
 /usr/bin/git --git-dir=$HOME/dotfiles/ --work-tree=$HOME add $HOME/.config/picom.conf
-/usr/bin/git --git-dir=$HOME/dotfiles/ --work-tree=$HOME add $HOME/.config/nvim
+/usr/bin/git --git-dir=$HOME/dotfiles/ --work-tree=$HOME add -f $HOME/.config/nvim/lua/custom
 /usr/bin/git --git-dir=$HOME/dotfiles/ --work-tree=$HOME add $HOME/.fehbg
 /usr/bin/git --git-dir=$HOME/dotfiles/ --work-tree=$HOME add $HOME/.bashrc

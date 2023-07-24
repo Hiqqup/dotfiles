@@ -6,6 +6,10 @@ window:
 
     dynamic_padding: true
 
+font:
+  normal:
+    family: JetBrainsMono Nerd Font
+  size: 14
 scrolling:
   # Maximum number of lines in the scrollback buffer.
   # Specifying '0' will disable scrolling.
