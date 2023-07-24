@@ -1,0 +1,9 @@
+[user]
+	name = hiqqup
+	email = jubu6000@gmail.com
+[init]
+	defaultBranch = main
+[color]
+	ui = auto
+[pull]
+	rebase = false
