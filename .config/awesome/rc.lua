@@ -251,6 +251,8 @@ globalkeys = gears.table.join(
     awful.key({  "Mod4"}, "2", function () awful.util.spawn_with_shell("alacritty &") end),
     awful.key({ "Mod4"}, "1", function () awful.util.spawn_with_shell("rofi -show drun &") end),
     awful.key({ "Mod4"}, "4", function () awful.util.spawn_with_shell("obsidian &") end),
+    awful.key({"Mod1", "Mod4", "Control"}, "h", function () awful.util.spawn_with_shell("systemctl hibernate &") end),
+  
     awful.key({ modkey,           }, "s",      hotkeys_popup.show_help,
               {description="show help", group="awesome"}),
     awful.key({ modkey,           }, "Left",   awful.tag.viewprev,
@@ -320,6 +322,7 @@ globalkeys = gears.table.join(
     awful.key({ modkey, "Shift"   }, "space", function () awful.layout.inc(-1)                end,
               {description = "select previous", group = "layout"}),
 
+
     awful.key({ modkey, "Control" }, "n",
               function ()
                   local c = awful.client.restore()
@@ -331,7 +334,6 @@ globalkeys = gears.table.join(
                   end
               end,
               {description = "restore minimized", group = "client"}),
-
     -- Prompt
     awful.key({ modkey },            "r",     function () awful.screen.focused().mypromptbox:run() end,
               {description = "run prompt", group = "launcher"}),
@@ -368,6 +370,7 @@ clientkeys = gears.table.join(
               {description = "move to screen", group = "client"}),
     awful.key({ modkey,           }, "t",      function (c) c.ontop = not c.ontop            end,
               {description = "toggle keep on top", group = "client"}),
+
     awful.key({ modkey,           }, "n",
         function (c)
             -- The client currently has the input focus, so it cannot be
