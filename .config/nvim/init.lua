@@ -38,6 +38,7 @@ P.S. You can delete this when you're done too. It's your config now :)
 -- Set <space> as the leader key
 -- See `:help mapleader`
 --  NOTE: Must happen before plugins are required (otherwise wrong leader will be used)
+
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
@@ -84,6 +85,17 @@ require('lazy').setup({
         'barrett-ruth/live-server.nvim',
         build = 'npm -g add live-server',
     },
+  {
+  "nvim-tree/nvim-tree.lua",
+  version = "*",
+  lazy = false,
+  dependencies = {
+    "nvim-tree/nvim-web-devicons",
+  },
+  config = function()
+    require("nvim-tree").setup {}
+  end,
+},
   {
     -- LSP Configuration & Plugins
     'neovim/nvim-lspconfig',
@@ -224,6 +236,15 @@ require("autoclose").setup()
 require('live-server').setup()
 
 vim.keymap.set('n', '<leader>ls', require('live-server').start)
+
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
+vim.opt.termguicolors = true
+
+vim.keymap.set('n', '<leader>e', "<cmd> NvimTreeToggle <CR>")
+vim.keymap.set('n', '<C-n>', "<cmd> NvimTreeToggle <CR>")
+
+
 -- [[ Setting options ]]
 -- See `:help vim.o`
 -- NOTE: You can change these options as you wish!
@@ -407,8 +428,8 @@ local on_attach = function(_, bufnr)
     end
 
     vim.keymap.set('n', keys, func, { buffer = bufnr, desc = desc })
-  end
 
+  end
   nmap('<leader>rn', vim.lsp.buf.rename, '[R]e[n]ame')
   nmap('<leader>ca', vim.lsp.buf.code_action, '[C]ode [A]ction')
 

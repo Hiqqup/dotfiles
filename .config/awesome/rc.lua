@@ -244,7 +244,9 @@ root.buttons(gears.table.join(
     awful.button({ }, 5, awful.tag.viewprev)
 ))
 -- }}}
-
+local function printLetter (letter)
+   awful.util.spawn_with_shell("echo -n " .. letter .. " | xclip -selection clipboard && sleep 0.1 && xdotool key ctrl+v")
+end
 -- {{{ Key bindings
 globalkeys = gears.table.join(
     awful.key({  "Mod4"}, "3", function () awful.util.spawn_with_shell("google-chrome &") end),
@@ -252,6 +254,15 @@ globalkeys = gears.table.join(
     awful.key({ "Mod4"}, "1", function () awful.util.spawn_with_shell("rofi -show drun &") end),
     awful.key({ "Mod4"}, "4", function () awful.util.spawn_with_shell("obsidian &") end),
     awful.key({"Mod1", "Mod4", "Control"}, "h", function () awful.util.spawn_with_shell("systemctl hibernate &") end),
+    --german keyboard shinanigans
+    awful.key({ "Mod4", "Control"}, ";", function () printLetter('ö')  end),
+    awful.key({ "Mod4", "Control"}, "'", function () printLetter('ä')  end),
+    awful.key({ "Mod4", "Control"}, "[", function () printLetter('ü')  end),
+    awful.key({ "Mod4", "Control", "Shift"}, ";", function () printLetter('Ö')  end),
+    awful.key({ "Mod4", "Control", "Shift"}, "'", function () printLetter('Ä')  end),
+    awful.key({ "Mod4", "Control", "Shift"}, "[", function () printLetter('Ü')  end),
+    awful.key({ "Mod4", "Control"}, "-", function () printLetter('ß')  end),
+
   
     awful.key({ modkey,           }, "s",      hotkeys_popup.show_help,
               {description="show help", group="awesome"}),
@@ -471,7 +482,7 @@ root.keys(globalkeys)
 awful.rules.rules = {
     -- All clients will match this rule.
     { rule = { },
-      properties = { border_width = beautiful.border_width,
+      properties = { border_width = 0,
                      border_color = beautiful.border_normal,
                      focus = awful.client.focus.filter,
                      raise = true,

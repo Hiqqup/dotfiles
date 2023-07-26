@@ -15,6 +15,8 @@ gotta add bootstrap in order to install packages
 -rofi
 -maybe obsidian
 -keepassxc
--nvidia drivers add nonfree to 
-nvim /etc/apt/sources.list
+-nvidia drivers add nonfree to -> nvim /etc/apt/sources.list 
+-xclip
+-xdotools
+
 

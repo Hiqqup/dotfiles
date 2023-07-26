@@ -7,3 +7,6 @@
 /usr/bin/git --git-dir=$HOME/dotfiles/ --work-tree=$HOME add $HOME/.config/nvim/
 /usr/bin/git --git-dir=$HOME/dotfiles/ --work-tree=$HOME add $HOME/.fehbg
 /usr/bin/git --git-dir=$HOME/dotfiles/ --work-tree=$HOME add $HOME/.bashrc
+
+/usr/bin/git --git-dir=$HOME/dotfiles/ --work-tree=$HOME commit 
+/usr/bin/git --git-dir=$HOME/dotfiles/ --work-tree=$HOME push 
