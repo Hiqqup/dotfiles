@@ -245,14 +245,16 @@ root.buttons(gears.table.join(
 ))
 -- }}}
 local function printLetter (letter)
-   awful.util.spawn_with_shell("echo -n " .. letter .. " | xclip -selection clipboard && sleep 0.1 && xdotool key ctrl+v")
+    local clipboard =  io.popen('xclip -o')
+    awful.util.spawn_with_shell("echo -n " .. letter .. " | xclip -selection clipboard && sleep 0.2 && xdotool key ctrl+v && echo -n " .. clipboard:read("*a") .. " | xclip -selection clipboard ")
 end
 -- {{{ Key bindings
 globalkeys = gears.table.join(
     awful.key({  "Mod4"}, "3", function () awful.util.spawn_with_shell("google-chrome &") end),
     awful.key({  "Mod4"}, "2", function () awful.util.spawn_with_shell("alacritty &") end),
     awful.key({ "Mod4"}, "1", function () awful.util.spawn_with_shell("rofi -show drun &") end),
-    awful.key({ "Mod4"}, "4", function () awful.util.spawn_with_shell("obsidian &") end),
+    awful.key({ "Mod4"}, "5", function () awful.util.spawn_with_shell("obsidian &") end),
+    --awful.key({ "Mod4"}, "4", function () awful.util.spawn_with_shell("nuclear &") end),
     awful.key({"Mod1", "Mod4", "Control"}, "h", function () awful.util.spawn_with_shell("systemctl hibernate &") end),
     --german keyboard shinanigans
     awful.key({ "Mod4", "Control"}, ";", function () printLetter('ö')  end),
