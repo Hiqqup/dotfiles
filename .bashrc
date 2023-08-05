@@ -1,4 +1,5 @@
 alias config='/usr/bin/git --git-dir=$HOME/dotfiles/ --work-tree=$HOME'
+alias scrape='cd $HOME/Music/papa && ./.scrape.sh && cd -'
 HISTSIZE=HISTFILESIZE=
 shopt -s autocd
 set -o vi

@@ -254,6 +254,7 @@ globalkeys = gears.table.join(
     awful.key({  "Mod4"}, "2", function () awful.util.spawn_with_shell("alacritty &") end),
     awful.key({ "Mod4"}, "1", function () awful.util.spawn_with_shell("rofi -show drun &") end),
     awful.key({ "Mod4"}, "5", function () awful.util.spawn_with_shell("obsidian &") end),
+    awful.key({ "Mod4", "Shift"}, "s", function () awful.util.spawn_with_shell("spectacle -c &") end),
     --awful.key({ "Mod4"}, "4", function () awful.util.spawn_with_shell("nuclear &") end),
     awful.key({"Mod1", "Mod4", "Control"}, "h", function () awful.util.spawn_with_shell("systemctl hibernate &") end),
     --german keyboard shinanigans
