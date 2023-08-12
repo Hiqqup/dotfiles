@@ -121,11 +121,9 @@ menubar.utils.terminal = terminal -- Set the terminal for applications that requ
 -- }}}
 
 -- Keyboard map indicator and switcher
-mykeyboardlayout = awful.widget.keyboardlayout()
 
 -- {{{ Wibar
 -- Create a textclock widget
-mytextclock = wibox.widget.textclock()
 
 -- Create a wibox for each screen and add it
 local taglist_buttons = gears.table.join(
@@ -203,39 +201,134 @@ awful.screen.connect_for_each_screen(function(s)
     s.mytaglist = awful.widget.taglist {
         screen  = s,
         filter  = awful.widget.taglist.filter.all,
+        style   = {
+            shape = gears.shape.circle,
+        },
+        widget_template = {
+            {
+                {
+                    {
+
+                        {
+                            id     = 'index_role',
+                            widget = wibox.widget.textbox,
+                        },
+                        margins = 4,
+                        widget  = wibox.container.margin,
+                    },
+
+                    layout = wibox.layout.fixed.horizontal,
+                },
+                left  = 5,
+                right = 5,
+                widget = wibox.container.margin
+            },
+            id     = 'background_role',
+            widget = wibox.container.background,
+            -- Add support for hover colors and an index label
+            update_callback = function(self, c3, index, objects) --luacheck: no unused args
+                self:get_children_by_id('index_role')[1].markup = '<b> '..index..' </b>'
+            end,
+        },
+
         buttons = taglist_buttons
     }
 
+
+    beautiful.taglist_bg_focus = '#000000'
     -- Create a tasklist widget
     s.mytasklist = awful.widget.tasklist {
-        screen  = s,
-        filter  = awful.widget.tasklist.filter.currenttags,
-        buttons = tasklist_buttons
+        screen   = s,
+        filter   = awful.widget.tasklist.filter.currenttags,
+        buttons  = tasklist_buttons,
+
+        style    = {
+            shape_border_width = 1,
+            shape_border_color = '#777777',
+            shape  = gears.shape.rounded_bar,
+        },
+        layout   = {
+            max_widget_size= 50,
+            spacing = 20,
+
+            spacing_widget = {
+                {
+                    forced_width = 10,
+                    shape        = gears.shape.circle,
+                    widget       = wibox.widget.separator
+                },
+                valign = 'center',
+                halign = 'center',
+                widget = wibox.container.place,
+            },
+            layout  = wibox.layout.flex.horizontal
+        },
+        widget_template = {
+            {
+                {
+                    {
+                        {
+                            id     = 'icon_role',
+                            widget = wibox.widget.imagebox,
+
+                        },
+                        margins = 2,
+                        widget  = wibox.container.margin,
+                    },
+                    layout = wibox.layout.fixed.horizontal,
+                },
+                left  = 10,
+                right = 10,
+
+                widget = wibox.container.margin
+            },
+            id     = 'background_role',
+            widget = wibox.container.background,
+        },
+    }
+    -- Create the wibox
+    s.mywibox = awful.wibar({
+        position = "bottom",
+        screen = s,
+        width = 1000,
+        height = 30,
+        bg = "#777777a7",
+        fg = '#ffffff',
+        ontop = true,
+        input_passthrough = true,
+        shape= gears.shape.rounded_bar,
+    })
+    s.my_spacing_widget = {
+        forced_width = 15,
+        widget = wibox.container.place,
     }
 
-    -- Create the wibox
-    --s.mywibox = awful.wibar({ position = "top", screen = s })
 
-    ---- Add widgets to the wibox
-    --s.mywibox:setup {
-    --    layout = wibox.layout.align.horizontal,
-    --    { -- Left widgets
-    --        layout = wibox.layout.fixed.horizontal,
-    --        mylauncher,
-    --        s.mytaglist,
-    --        s.mypromptbox,
-    --    },
-    --    s.mytasklist, -- Middle widget
-    --    { -- Right widgets
-    --        layout = wibox.layout.fixed.horizontal,
-    --        mykeyboardlayout,
-    --        wibox.widget.systray(),
-    --        mytextclock,
-    --        s.mylayoutbox,
-    --    },
-    --}
+    s.mytextclock = wibox.widget.textclock()
+    -- Add widgets to the wibox
+    s.mywibox:setup {
+        layout = wibox.layout.align.horizontal,
+        expand = 'none',
+        { -- Left widgets
+            s.my_spacing_widget ,
+            layout = wibox.layout.fixed.horizontal,
+            s.mytaglist,
+            s.mypromptbox,
+        },
+            s.mytasklist, -- Middle widget
+        { -- Right widgets
+            layout = wibox.layout.fixed.horizontal,
+           wibox.widget.systray(),
+            s.mytextclock,
+            --s.mylayoutbox,
+            s.my_spacing_widget ,
+        },
+
+    }
 end)
 -- }}}
+    --awful.screen.focused().mywibox.visible = not awful.screen.focused().mywibox.visible;
+awful.screen.connect_for_each_screen(function(s) s.mywibox.visible = not s.mywibox.visible;end)
 
 -- {{{ Mouse bindings
 root.buttons(gears.table.join(
@@ -245,7 +338,6 @@ root.buttons(gears.table.join(
 ))
 -- }}}
 local function printLetter (letter)
-    local clipboard =  io.popen('xclip -o')
     awful.util.spawn_with_shell("echo -n " .. letter .. " | xclip -selection clipboard && sleep 0.2 && xdotool key ctrl+v && echo -n " .. clipboard:read("*a") .. " | xclip -selection clipboard ")
 end
 -- {{{ Key bindings
@@ -253,10 +345,10 @@ globalkeys = gears.table.join(
     awful.key({  "Mod4"}, "3", function () awful.util.spawn_with_shell("google-chrome &") end),
     awful.key({  "Mod4"}, "2", function () awful.util.spawn_with_shell("alacritty &") end),
     awful.key({ "Mod4"}, "1", function () awful.util.spawn_with_shell("rofi -show drun &") end),
-    awful.key({ "Mod4"}, "5", function () awful.util.spawn_with_shell("obsidian &") end),
+    awful.key({ "Mod4"}, "4", function () awful.util.spawn_with_shell("obsidian &") end),
     awful.key({ "Mod4", "Shift"}, "s", function () awful.util.spawn_with_shell("spectacle -c &") end),
-    --awful.key({ "Mod4"}, "4", function () awful.util.spawn_with_shell("nuclear &") end),
     awful.key({"Mod1", "Mod4", "Control"}, "h", function () awful.util.spawn_with_shell("systemctl hibernate &") end),
+    awful.key({modkey,}, "b", function() awful.screen.connect_for_each_screen(function(s) s.mywibox.visible = not s.mywibox.visible;end)end),
     --german keyboard shinanigans
     awful.key({ "Mod4", "Control"}, ";", function () printLetter('ö')  end),
     awful.key({ "Mod4", "Control"}, "'", function () printLetter('ä')  end),
@@ -276,26 +368,34 @@ globalkeys = gears.table.join(
     awful.key({ modkey,           }, "Escape", awful.tag.history.restore,
               {description = "go back", group = "tag"}),
 
-    awful.key({ modkey,           }, "j",
-        function ()
-            awful.client.focus.byidx( 1)
-        end,
-        {description = "focus next by index", group = "client"}
-    ),
-    awful.key({ modkey,           }, "k",
-        function ()
-            awful.client.focus.byidx(-1)
-        end,
-        {description = "focus previous by index", group = "client"}
-    ),
+    awful.key({ modkey,           }, "j",function () awful.client.focus.global_bydirection('down') end,
+        {description = "focus next by index", group = "client"}),
+    awful.key({ modkey,           }, "k",function ()awful.client.focus.global_bydirection('up') end,
+        {description = "focus previous by index", group = "client"}),
+    awful.key({ modkey,           }, "l",     function () awful.client.focus.global_bydirection('right')          end,
+              {description = "increase master width factor", group = "layout"}),
+    awful.key({ modkey,           }, "h",     function () awful.client.focus.global_bydirection('left')          end,
+              {description = "decrease master width factor", group = "layout"}),
+
+    --substitution for mod h&l
+    awful.key({ modkey,           }, ".",     function () awful.tag.incmwfact( 0.05)          end,
+              {description = "increase master width factor", group = "layout"}),
+    awful.key({ modkey,           }, ",",     function () awful.tag.incmwfact(-0.05)          end,
+              {description = "decrease master width factor", group = "layout"}),
+
     awful.key({ modkey,           }, "w", function () mymainmenu:show() end,
               {description = "show main menu", group = "awesome"}),
 
     -- Layout manipulation
-    awful.key({ modkey, "Shift"   }, "j", function () awful.client.swap.byidx(  1)    end,
+    awful.key({ modkey, "Shift"   }, "j", function () awful.client.swap.global_bydirection('down')    end,
               {description = "swap with next client by index", group = "client"}),
-    awful.key({ modkey, "Shift"   }, "k", function () awful.client.swap.byidx( -1)    end,
+    awful.key({ modkey, "Shift"   }, "k", function () awful.client.swap.global_bydirection('up')    end,
               {description = "swap with previous client by index", group = "client"}),
+    awful.key({ modkey, "Shift"   }, "h",     function () awful.client.swap.global_bydirection('right') end,
+              {description = "increase the number of master clients", group = "layout"}),
+    awful.key({ modkey, "Shift"   }, "l",     function () awful.client.swap.global_bydirection('left') end,
+              {description = "decrease the number of master clients", group = "layout"}),
+
     awful.key({ modkey, "Control" }, "j", function () awful.screen.focus_relative( 1) end,
               {description = "focus the next screen", group = "screen"}),
     awful.key({ modkey, "Control" }, "k", function () awful.screen.focus_relative(-1) end,
@@ -318,15 +418,6 @@ globalkeys = gears.table.join(
               {description = "reload awesome", group = "awesome"}),
     awful.key({ modkey, "Shift"   }, "q", awesome.quit,
               {description = "quit awesome", group = "awesome"}),
-
-    awful.key({ modkey,           }, "l",     function () awful.tag.incmwfact( 0.05)          end,
-              {description = "increase master width factor", group = "layout"}),
-    awful.key({ modkey,           }, "h",     function () awful.tag.incmwfact(-0.05)          end,
-              {description = "decrease master width factor", group = "layout"}),
-    awful.key({ modkey, "Shift"   }, "h",     function () awful.tag.incnmaster( 1, nil, true) end,
-              {description = "increase the number of master clients", group = "layout"}),
-    awful.key({ modkey, "Shift"   }, "l",     function () awful.tag.incnmaster(-1, nil, true) end,
-              {description = "decrease the number of master clients", group = "layout"}),
     awful.key({ modkey, "Control" }, "h",     function () awful.tag.incncol( 1, nil, true)    end,
               {description = "increase the number of columns", group = "layout"}),
     awful.key({ modkey, "Control" }, "l",     function () awful.tag.incncol(-1, nil, true)    end,

@@ -19,7 +19,6 @@ Kickstart.nvim is a template for your own configuration.
 
   And then you can explore or search through `:help lua-guide`
 
-
 Kickstart Guide:
 
 I have left several `:help X` comments throughout the init.lua
@@ -86,17 +85,6 @@ require('lazy').setup({
         'barrett-ruth/live-server.nvim',
         build = 'npm -g add live-server',
     },
-  {
-  "nvim-tree/nvim-tree.lua",
-  version = "*",
-  lazy = false,
-  dependencies = {
-    "nvim-tree/nvim-web-devicons",
-  },
-  config = function()
-    require("nvim-tree").setup {}
-  end,
-},
   {
     -- LSP Configuration & Plugins
     'neovim/nvim-lspconfig',
@@ -239,13 +227,20 @@ require('live-server').setup()
 vim.keymap.set('n', '<leader>lss', require('live-server').start)
 vim.keymap.set('n', '<leader>ls', require('live-server').stop)
 
-vim.g.loaded_netrw = 1
-vim.g.loaded_netrwPlugin = 1
 vim.opt.termguicolors = true
 
-vim.keymap.set('n', '<leader>e', "<cmd> NvimTreeFocus <CR>")
-vim.keymap.set('n', '<C-n>', "<cmd> NvimTreeToggle <CR>")
+vim.g.netrw_hide = 1
+vim.g.netrw_list_hide = [[\(^\|\s\s\)\zs\.\S\+]]--"\(^\|\s\s\)\zs\.\S\+"
+vim.g.netrw_bufsettings="noma nomod renu nobl nowrap ro nornu"
+vim.keymap.set('n', '<leader>e', "<cmd>Ex<CR>")
 
+--messin with tabstop
+vim.o.tabstop = 4;
+vim.o.expandtab = true
+vim.o.smartindent = true
+vim.o.shiftwidth = 4
+
+vim.o.relativenumber = true
 
 -- [[ Setting options ]]
 -- See `:help vim.o`
