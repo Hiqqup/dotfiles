@@ -72,19 +72,17 @@ require('lazy').setup({
   'tpope/vim-sleuth',
   'lervag/vimtex',
 
-{
-     'christoomey/vim-tmux-navigator',
+  {
+    'christoomey/vim-tmux-navigator',
     lazy=false,
 
   },
 
-'m4xshen/autoclose.nvim',
-  -- NOTE: This is where your plugins related to LSP can be installed.
   --  The configuration is done below. Search for lspconfig to find it below.
-    {
-        'barrett-ruth/live-server.nvim',
-        build = 'npm -g add live-server',
-    },
+  {
+    'barrett-ruth/live-server.nvim',
+    build = 'npm -g add live-server',
+  },
   {
     -- LSP Configuration & Plugins
     'neovim/nvim-lspconfig',
@@ -152,7 +150,7 @@ require('lazy').setup({
       vim.cmd.colorscheme 'dracula'
     end,
   },
-  
+
 
   {
     -- Set lualine as statusline
@@ -221,7 +219,6 @@ require('lazy').setup({
   --    For additional information see: https://github.com/folke/lazy.nvim#-structuring-your-plugins
   -- { import = 'custom.plugins' },
 }, {})
-require("autoclose").setup()
 require('live-server').setup()
 
 vim.keymap.set('n', '<leader>lss', require('live-server').start)
