@@ -340,6 +340,15 @@ root.buttons(gears.table.join(
 local clipboard =  io.popen('xclip -o')
 local function printLetter (letter)
     awful.util.spawn_with_shell("echo -n " .. letter .. " | xclip -selection clipboard && sleep 0.2 && xdotool key ctrl+v && echo -n " .. clipboard:read("*a") .. " | xclip -selection clipboard ")
+
+end
+local function autostart()
+    local tags = awful.screen.focused().selected_tags;
+    awful.spawn("google-chrome", {
+        tag       = tags[5],
+})
+
+
 end
 -- {{{ Key bindings
 globalkeys = gears.table.join(
@@ -347,9 +356,11 @@ globalkeys = gears.table.join(
     awful.key({  "Mod4"}, "2", function () awful.util.spawn_with_shell("alacritty &") end),
     awful.key({ "Mod4"}, "1", function () awful.util.spawn_with_shell("rofi -show drun &") end),
     awful.key({ "Mod4"}, "4", function () awful.util.spawn_with_shell("obsidian &") end),
+    awful.key({ "Mod4"}, "s", function () autostart() end),
     awful.key({ "Mod4", "Shift"}, "s", function () awful.util.spawn_with_shell("spectacle -c &") end),
     awful.key({"Mod1", "Mod4", "Control"}, "h", function () awful.util.spawn_with_shell("systemctl hibernate &") end),
     awful.key({modkey,}, "b", function() awful.screen.connect_for_each_screen(function(s) s.mywibox.visible = not s.mywibox.visible;end)end),
+
     --german keyboard shinanigans
     awful.key({ "Mod4", "Control"}, ";", function () printLetter('ö')  end),
     awful.key({ "Mod4", "Control"}, "'", function () printLetter('ä')  end),

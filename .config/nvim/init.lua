@@ -62,6 +62,14 @@ vim.opt.rtp:prepend(lazypath)
 --
 --  You can also configure plugins after the setup call,
 --    as they will be available in your neovim runtime.
+
+--messin with lualine theme
+local custom_dracula = require'lualine.themes.dracula'
+    custom_dracula.normal.c.bg = nil
+    custom_dracula.insert.c.bg = nil
+    custom_dracula.command.c.bg = nil
+    custom_dracula.visual.c.bg = nil
+
 require('lazy').setup({
   -- NOTE: First, some plugins that don't require any configuration
   -- Git related plugins
@@ -159,7 +167,7 @@ require('lazy').setup({
     opts = {
       options = {
         icons_enabled = false,
-        theme = 'onedark',
+        theme = custom_dracula,
         component_separators = '|',
         section_separators = '',
       },
@@ -230,6 +238,8 @@ vim.g.netrw_hide = 1
 vim.g.netrw_list_hide = [[\(^\|\s\s\)\zs\.\S\+]]--"\(^\|\s\s\)\zs\.\S\+"
 vim.g.netrw_bufsettings="noma nomod renu nobl nowrap ro nornu"
 vim.keymap.set('n', '<leader>e', "<cmd>Ex<CR>")
+
+
 
 --messin with tabstop
 vim.o.tabstop = 4;
