@@ -337,6 +337,7 @@ root.buttons(gears.table.join(
     awful.button({ }, 5, awful.tag.viewprev)
 ))
 -- }}}
+local clipboard =  io.popen('xclip -o')
 local function printLetter (letter)
     awful.util.spawn_with_shell("echo -n " .. letter .. " | xclip -selection clipboard && sleep 0.2 && xdotool key ctrl+v && echo -n " .. clipboard:read("*a") .. " | xclip -selection clipboard ")
 end
@@ -391,9 +392,9 @@ globalkeys = gears.table.join(
               {description = "swap with next client by index", group = "client"}),
     awful.key({ modkey, "Shift"   }, "k", function () awful.client.swap.global_bydirection('up')    end,
               {description = "swap with previous client by index", group = "client"}),
-    awful.key({ modkey, "Shift"   }, "h",     function () awful.client.swap.global_bydirection('right') end,
+    awful.key({ modkey, "Shift"   }, "l",     function () awful.client.swap.global_bydirection('right') end,
               {description = "increase the number of master clients", group = "layout"}),
-    awful.key({ modkey, "Shift"   }, "l",     function () awful.client.swap.global_bydirection('left') end,
+    awful.key({ modkey, "Shift"   }, "h",     function () awful.client.swap.global_bydirection('left') end,
               {description = "decrease the number of master clients", group = "layout"}),
 
     awful.key({ modkey, "Control" }, "j", function () awful.screen.focus_relative( 1) end,
@@ -703,5 +704,7 @@ awful.spawn.with_shell("picom &")
 awful.spawn.with_shell("xrandr --output 'HDMI-0' --auto --output 'DVI-D-0' --right-of 'HDMI-0' &")
 awful.spawn.with_shell("xsetwacom set 17 MapToOutput 1920x1080+0+0 &")
 awful.spawn.with_shell("xsetwacom set 17 Rotate half &")
+
+-- Autorun programs
 
 
