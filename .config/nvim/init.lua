@@ -64,11 +64,11 @@ vim.opt.rtp:prepend(lazypath)
 --    as they will be available in your neovim runtime.
 
 --messin with lualine theme
-local custom_dracula = require'lualine.themes.dracula'
-    custom_dracula.normal.c.bg = nil
-    custom_dracula.insert.c.bg = nil
-    custom_dracula.command.c.bg = nil
-    custom_dracula.visual.c.bg = nil
+local custom_dracula = require 'lualine.themes.dracula'
+custom_dracula.normal.c.bg = nil
+custom_dracula.insert.c.bg = nil
+custom_dracula.command.c.bg = nil
+custom_dracula.visual.c.bg = nil
 
 require('lazy').setup({
   -- NOTE: First, some plugins that don't require any configuration
@@ -82,7 +82,7 @@ require('lazy').setup({
 
   {
     'christoomey/vim-tmux-navigator',
-    lazy=false,
+    lazy = false,
 
   },
 
@@ -101,7 +101,7 @@ require('lazy').setup({
 
       -- Useful status updates for LSP
       -- NOTE: `opts = {}` is the same as calling `require('fidget').setup({})`
-      { 'j-hui/fidget.nvim', tag = 'legacy', opts = {} },
+      { 'j-hui/fidget.nvim',       tag = 'legacy', opts = {} },
 
       -- Additional lua configuration, makes nvim stuff amazing!
       'folke/neodev.nvim',
@@ -125,7 +125,7 @@ require('lazy').setup({
   },
 
   -- Useful plugin to show you pending keybinds.
-  { 'folke/which-key.nvim', opts = {} },
+  { 'folke/which-key.nvim',          opts = {} },
   {
     -- Adds git releated signs to the gutter, as well as utilities for managing changes
     'lewis6991/gitsigns.nvim',
@@ -139,7 +139,8 @@ require('lazy').setup({
         changedelete = { text = '~' },
       },
       on_attach = function(bufnr)
-        vim.keymap.set('n', '<leader>gp', require('gitsigns').prev_hunk, { buffer = bufnr, desc = '[G]o to [P]revious Hunk' })
+        vim.keymap.set('n', '<leader>gp', require('gitsigns').prev_hunk,
+          { buffer = bufnr, desc = '[G]o to [P]revious Hunk' })
         vim.keymap.set('n', '<leader>gn', require('gitsigns').next_hunk, { buffer = bufnr, desc = '[G]o to [N]ext Hunk' })
         vim.keymap.set('n', '<leader>ph', require('gitsigns').preview_hunk, { buffer = bufnr, desc = '[P]review [H]unk' })
       end,
@@ -164,14 +165,6 @@ require('lazy').setup({
     -- Set lualine as statusline
     'nvim-lualine/lualine.nvim',
     -- See `:help lualine.txt`
-    opts = {
-      options = {
-        icons_enabled = false,
-        theme = custom_dracula,
-        component_separators = '|',
-        section_separators = '',
-      },
-    },
   },
 
   {
@@ -186,7 +179,7 @@ require('lazy').setup({
   },
 
   -- "gc" to comment visual regions/lines
-  { 'numToStr/Comment.nvim', opts = {} },
+  { 'numToStr/Comment.nvim',         opts = {} },
 
   -- Fuzzy Finder (files, lsp, etc)
   { 'nvim-telescope/telescope.nvim', branch = '0.1.x', dependencies = { 'nvim-lua/plenary.nvim' } },
@@ -216,7 +209,7 @@ require('lazy').setup({
   -- NOTE: Next Step on Your Neovim Journey: Add/Configure additional "plugins" for kickstart
   --       These are some example plugins that I've included in the kickstart repository.
   --       Uncomment any of the lines below to enable them.
-  -- require 'kickstart.plugins.autoformat',
+  require 'autoformat',
   -- require 'kickstart.plugins.debug',
 
   -- NOTE: The import below can automatically add your own plugins, configuration, etc from `lua/custom/plugins/*.lua`
@@ -235,10 +228,47 @@ vim.keymap.set('n', '<leader>ls', require('live-server').stop)
 vim.opt.termguicolors = true
 
 vim.g.netrw_hide = 1
-vim.g.netrw_list_hide = [[\(^\|\s\s\)\zs\.\S\+]]--"\(^\|\s\s\)\zs\.\S\+"
-vim.g.netrw_bufsettings="noma nomod renu nobl nowrap ro nornu"
+vim.g.netrw_list_hide = [[\(^\|\s\s\)\zs\.\S\+]] --"\(^\|\s\s\)\zs\.\S\+"
+vim.g.netrw_bufsettings = "noma nomod renu nobl nowrap ro nornu"
 vim.keymap.set('n', '<leader>e', "<cmd>Ex<CR>")
+--messin some more with lualine
 
+require('lualine').setup {
+  options = {
+    theme = custom_dracula,
+    icons_enabled = true,
+    component_separators = { left = '', right = '' },
+    section_separators = { left = '', right = '' },
+    disabled_filetypes = {
+      statusline = {},
+      winbar = {},
+    },
+    ignore_focus = {},
+    always_divide_middle = true,
+    globalstatus = false,
+    refresh = {
+      statusline = 1000,
+      tabline = 1000,
+      winbar = 1000,
+    }
+  },
+  sections = {
+    lualine_a = { 'mode' },
+    lualine_b = { 'branch', 'diff', 'diagnostics' },
+    lualine_c = { 'filename' },
+    lualine_x = { 'encoding', 'fileformat', 'filetype' },
+    lualine_y = { 'progress' },
+    lualine_z = { 'location' }
+  },
+  inactive_sections = {
+    lualine_a = {},
+    lualine_b = {},
+    lualine_c = { 'filename' },
+    lualine_x = { 'location' },
+    lualine_y = {},
+    lualine_z = {}
+  },
+}
 
 
 --messin with tabstop
@@ -432,7 +462,6 @@ local on_attach = function(_, bufnr)
     end
 
     vim.keymap.set('n', keys, func, { buffer = bufnr, desc = desc })
-
   end
   nmap('<leader>rn', vim.lsp.buf.rename, '[R]e[n]ame')
   nmap('<leader>ca', vim.lsp.buf.code_action, '[C]ode [A]ction')

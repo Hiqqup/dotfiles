@@ -8,6 +8,8 @@
 /usr/bin/git --git-dir=$HOME/dotfiles/ --work-tree=$HOME add $HOME/.fehbg
 /usr/bin/git --git-dir=$HOME/dotfiles/ --work-tree=$HOME add $HOME/.bashrc
 /usr/bin/git --git-dir=$HOME/dotfiles/ --work-tree=$HOME add $HOME/.config/tmux/tmux.conf
+/usr/bin/git --git-dir=$HOME/dotfiles/ --work-tree=$HOME add $HOME/dotfiles/vimium-options.json
+/usr/bin/git --git-dir=$HOME/dotfiles/ --work-tree=$HOME add $HOME/dotfiles/.config/chromium/Default/Bookmarks
 
 /usr/bin/git --git-dir=$HOME/dotfiles/ --work-tree=$HOME commit 
 /usr/bin/git --git-dir=$HOME/dotfiles/ --work-tree=$HOME push 
