@@ -28,7 +28,7 @@
             "url": "https://pomofocus.io/"
          }, {
             "date_added": "13329237725000000",
-            "date_last_used": "0",
+            "date_last_used": "13336961936388345",
             "guid": "546b70f6-6fab-4d77-a876-9ee3e03800cf",
             "id": "104",
             "name": "",
@@ -68,7 +68,7 @@
             "url": "https://monkeytype.com/"
          }, {
             "date_added": "13334265928000000",
-            "date_last_used": "0",
+            "date_last_used": "13336963852504131",
             "guid": "150e900c-6497-4a9f-8033-293cd29a2119",
             "id": "109",
             "name": "",
@@ -77,7 +77,7 @@
          }, {
             "children": [ {
                "date_added": "13331679272000000",
-               "date_last_used": "0",
+               "date_last_used": "13336961947521967",
                "guid": "0ba66920-f6dd-4470-8f3d-3b952709d168",
                "id": "111",
                "name": "vim",

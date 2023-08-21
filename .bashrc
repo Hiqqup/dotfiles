@@ -1,9 +1,14 @@
 alias config='$HOME/dotfiles/add.sh'
 alias scrape='$HOME/Music/papa/.scrape.sh'
 alias vim='nvim'
+
+alias tt='$HOME/dotfiles/tt.sh'
 HISTSIZE=HISTFILESIZE=
 shopt -s autocd
 set -o vi
+
+
+
 
 # get current branch in git repo
 function parse_git_branch() {
