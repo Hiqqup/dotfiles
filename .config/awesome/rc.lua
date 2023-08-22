@@ -56,6 +56,10 @@ beautiful.init(gears.filesystem.get_themes_dir() .. "default/theme.lua")
 
 -- This is used later as the default terminal and editor to run.
 terminal = "alacritty"
+browser = "google-chrome"
+--browser = "chromium"
+--browser = "firefox"
+
 editor = os.getenv("EDITOR") or "editor"
 editor_cmd = terminal .. " -e " .. editor
 
@@ -354,7 +358,7 @@ end
 local function autostart()
     awful.util.spawn_with_shell(
         "alacritty --hold -e tmux new-session '$HOME/.config/tmux/plugins/tmux-resurrect/scripts/restore.sh'");
-    awful.util.spawn_with_shell("chromium &")
+    awful.util.spawn_with_shell(browser .." &")
 end
 ]]
 
@@ -366,7 +370,7 @@ local function autostart()
 
     awful.spawn("alacritty --hold -e tmux new-session")
 
-    awful.spawn("chromium", {
+    awful.spawn(browser, {
     })
 end
 local function test()
@@ -384,7 +388,7 @@ local function test()
 end
 -- {{{ Key bindings
 globalkeys = gears.table.join(
-    awful.key({ "Mod4" }, "3", function() awful.util.spawn_with_shell("chromium &") end),
+    awful.key({ "Mod4" }, "3", function() awful.util.spawn_with_shell(browser .. " &") end),
     awful.key({ "Mod4" }, "2", function() awful.util.spawn_with_shell("alacritty &") end),
     awful.key({ "Mod4" }, "1", function() awful.util.spawn_with_shell("rofi -show drun &") end),
     awful.key({ "Mod4" }, "4", function() awful.util.spawn_with_shell("obsidian &") end),

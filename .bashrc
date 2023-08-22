@@ -4,10 +4,21 @@ alias vim='nvim'
 
 alias tt='$HOME/dotfiles/tt.sh'
 HISTSIZE=HISTFILESIZE=
-shopt -s autocd
 set -o vi
+export VISUAL=nvim
+export EDITOR=nvim
+
+export PS1="\[\e[35m\][\[\e[m\]\[\e[36m\]\A\[\e[m\]\[\e[35m\]]\[\e[m\]\[\e[32m\]\`parse_git_branch\`\[\e[m\]\[\e[35m\]*\[\e[m\]\[\e[34m\]\w\[\e[m\] "
+
+# Created by `pipx` on 2023-07-28 15:17:56
+export PATH="$PATH:/home/productiveuser/.local/bin"
 
 
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+. "$HOME/.cargo/env"
 
 
 # get current branch in git repo
@@ -21,7 +32,6 @@ function parse_git_branch() {
 		echo ""
 	fi
 }
-
 # get current status of git repo
 function parse_git_dirty {
 	status=`git status 2>&1 | tee`
@@ -56,16 +66,3 @@ function parse_git_dirty {
 		echo ""
 	fi
 }
-
-export PS1="\[\e[35m\][\[\e[m\]\[\e[36m\]\A\[\e[m\]\[\e[35m\]]\[\e[m\]\[\e[32m\]\`parse_git_branch\`\[\e[m\]\[\e[35m\]*\[\e[m\]\[\e[34m\]\w\[\e[m\] "
-
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-. "$HOME/.cargo/env"
-
-export VISUAL=nvim
-export EDITOR=nvim
-
-# Created by `pipx` on 2023-07-28 15:17:56
-export PATH="$PATH:/home/productiveuser/.local/bin"
