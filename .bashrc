@@ -7,6 +7,10 @@ HISTSIZE=HISTFILESIZE=
 set -o vi
 export VISUAL=nvim
 export EDITOR=nvim
+source /usr/share/doc/fzf/examples/key-bindings.bash
+source /usr/share/bash-completion/completions/fzf      
+
+export FZF_DEFAULT_OPTS='--color=fg:#f8f8f2,hl:#bd93f9 --color=fg+:#f8f8f2,hl+:#bd93f9 --color=info:#ffb86c,prompt:#50fa7b,pointer:#ff79c6 --color=marker:#ff79c6,spinner:#ffb86c,header:#6272a4'
 
 export PS1="\[\e[35m\][\[\e[m\]\[\e[36m\]\A\[\e[m\]\[\e[35m\]]\[\e[m\]\[\e[32m\]\`parse_git_branch\`\[\e[m\]\[\e[35m\]*\[\e[m\]\[\e[34m\]\w\[\e[m\] "
 

@@ -2,6 +2,7 @@
 /usr/bin/git --git-dir=$HOME/dotfiles/ --work-tree=$HOME add $HOME/dotfiles/README.md
 /usr/bin/git --git-dir=$HOME/dotfiles/ --work-tree=$HOME add $HOME/dotfiles/.gitignore
 /usr/bin/git --git-dir=$HOME/dotfiles/ --work-tree=$HOME add $HOME/.config/awesome
+/usr/bin/git --git-dir=$HOME/dotfiles/ --work-tree=$HOME add $HOME/.config/X11
 /usr/bin/git --git-dir=$HOME/dotfiles/ --work-tree=$HOME add $HOME/.config/neofetch
 /usr/bin/git --git-dir=$HOME/dotfiles/ --work-tree=$HOME add $HOME/.config/alacritty.yml
 /usr/bin/git --git-dir=$HOME/dotfiles/ --work-tree=$HOME add $HOME/.config/picom.conf

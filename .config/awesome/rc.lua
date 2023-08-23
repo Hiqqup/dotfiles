@@ -56,7 +56,8 @@ beautiful.init(gears.filesystem.get_themes_dir() .. "default/theme.lua")
 
 -- This is used later as the default terminal and editor to run.
 terminal = "alacritty"
-browser = "google-chrome"
+browser = 'brave-browser';
+--browser = "google-chrome"
 --browser = "chromium"
 --browser = "firefox"
 
