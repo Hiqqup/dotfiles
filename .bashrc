@@ -1,6 +1,7 @@
 alias config='$HOME/dotfiles/add.sh'
 alias scrape='$HOME/Music/papa/.scrape.sh'
 alias vim='nvim'
+alias leetcode='source $HOME/.config/my-scripts/leetcode/leetcode-time.sh'
 
 alias tt='$HOME/dotfiles/tt.sh'
 HISTSIZE=HISTFILESIZE=
