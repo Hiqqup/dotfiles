@@ -396,7 +396,7 @@ globalkeys = gears.table.join(
     awful.key({ "Mod4" }, "s", function() autostart() end),
     awful.key({ "Mod4" }, "t", function() test() end),
     awful.key({ "Mod4", "Shift" }, "s", function() awful.util.spawn_with_shell("spectacle -c &") end),
-    awful.key({ "Mod1", "Mod4", "Control" }, "h", function() awful.util.spawn_with_shell("systemctl hibernate &") end),
+    awful.key({ "Mod1", "Mod4", "Control" }, "h", function() awful.util.spawn_with_shell("systemctl suspend &") end),
     awful.key({ modkey, }, "b",
         function() awful.screen.connect_for_each_screen(function(s) s.mywibox.visible = not s.mywibox.visible; end) end),
 
