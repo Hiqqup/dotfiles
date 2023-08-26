@@ -5,8 +5,9 @@ pull down the repo via https
 mkdir ~/.config/X11
 #xauth
 '
-cd ~/dotfiles/home
-cp -ru . ~
+cd ~/dotfiles/
+cp -r home/.* ~
+cp root/* /
 
 #Arch installd dependencies
 pacman -S xorg-xinit xorg-server awesome alacritty neovim feh rofi xclip xdotools fzf tmux keepassxc
