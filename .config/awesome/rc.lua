@@ -18,7 +18,7 @@ local hotkeys_popup = require("awful.hotkeys_popup")
 require("awful.hotkeys_popup.keys")
 
 -- Load Debian menu entries
-local debian = require("debian.menu")
+--local debian = require("debian.menu")
 local has_fdo, freedesktop = pcall(require, "freedesktop")
 
 -- {{{ Error handling
@@ -117,7 +117,6 @@ else
     mymainmenu = awful.menu({
         items = {
             menu_awesome,
-            { "Debian", debian.menu.Debian_menu.Debian },
             menu_terminal,
         }
     })
@@ -126,7 +125,6 @@ mylauncher = awful.widget.launcher({
     image = beautiful.awesome_icon,
     menu = mymainmenu
 })
-
 -- Menubar configuration
 menubar.utils.terminal = terminal -- Set the terminal for applications that require it
 -- }}}
@@ -176,6 +174,7 @@ local tasklist_buttons = gears.table.join(
         awful.client.focus.byidx(-1)
     end))
 
+--gotta edit this
 local function set_wallpaper(s)
     -- Wallpaper
     if beautiful.wallpaper then
@@ -348,55 +347,32 @@ root.buttons(gears.table.join(
     awful.button({}, 5, awful.tag.viewprev)
 ))
 -- }}}
-local clipboard = io.popen('xclip -o')
-local function printLetter(letter)
-    awful.util.spawn_with_shell("echo -n " ..
-        letter ..
-        " | xclip -selection clipboard && sleep 0.2 && xdotool key ctrl+v && echo -n " ..
-        clipboard:read("*a") .. " | xclip -selection clipboard ")
-end
---[[
-local function autostart()
-    awful.util.spawn_with_shell(
-        "alacritty --hold -e tmux new-session '$HOME/.config/tmux/plugins/tmux-resurrect/scripts/restore.sh'");
-    awful.util.spawn_with_shell(browser .." &")
-end
-]]
+
 
 local function autostart()
-    --awful.spawn(
-    --    "alacritty --hold -e tmux new-session '" ..
-    --    os.getenv("HOME") .. "/.config/tmux/plugins/tmux-resurrect/scripts/restore.sh'", {
-    --    })
-
-    awful.spawn("alacritty --hold -e tmux new-session")
+    awful.spawn(terminal .. " --hold -e tmux new-session")
 
     awful.spawn(browser, {
+
     })
 end
-local function test()
-    for s in screen do
-        naughty.notify({
-            preset = naughty.config.presets.debug,
-            title = "Debug Message",
-            text = tostring(s)
-        });
-        awful.spawn('alacritty', {
-            screen = s,
-            tag = s.tags[2]
-        });
-    end
+
+local function printLetter(letter)
+    awful.util.spawn_with_shell("sleep 0.2 && xdotool type " .. letter);
 end
+local function printClipboard()
+    awful.util.spawn_with_shell('sleep 0.2 && xdotool type "$(xclip -o)"');
+end
+
 -- {{{ Key bindings
 globalkeys = gears.table.join(
     awful.key({ "Mod4" }, "3", function() awful.util.spawn_with_shell(browser .. " &") end),
-    awful.key({ "Mod4" }, "2", function() awful.util.spawn_with_shell("alacritty &") end),
     awful.key({ "Mod4" }, "1", function() awful.util.spawn_with_shell("rofi -show drun &") end),
     awful.key({ "Mod4" }, "4", function() awful.util.spawn_with_shell("obsidian &") end),
     awful.key({ "Mod4" }, "s", function() autostart() end),
     awful.key({ "Mod4" }, "t", function() test() end),
     awful.key({ "Mod4", "Shift" }, "s", function() awful.util.spawn_with_shell("spectacle -c &") end),
-    awful.key({ "Mod1", "Mod4", "Control" }, "h", function() awful.util.spawn_with_shell("systemctl suspend &") end),
+    awful.key({ modkey, "Mod4", "Control" }, "h", function() awful.util.spawn_with_shell("systemctl suspend &") end),
     awful.key({ modkey, }, "b",
         function() awful.screen.connect_for_each_screen(function(s) s.mywibox.visible = not s.mywibox.visible; end) end),
 
@@ -408,6 +384,7 @@ globalkeys = gears.table.join(
     awful.key({ "Mod4", "Control", "Shift" }, "'", function() printLetter('Ä') end),
     awful.key({ "Mod4", "Control", "Shift" }, "[", function() printLetter('Ü') end),
     awful.key({ "Mod4", "Control" }, "-", function() printLetter('ß') end),
+    awful.key({ "Mod4", "Control" }, "p", function() printClipboard() end),
     awful.key({ modkey, }, "s", hotkeys_popup.show_help,
         { description = "show help", group = "awesome" }),
     awful.key({ modkey, }, "Left", awful.tag.viewprev,
@@ -622,6 +599,14 @@ root.keys(globalkeys)
 awful.rules.rules = {
     -- All clients will match this rule.
     {
+        rule = {
+            class = "test"
+        },
+        properties = {
+            screen = 1, tag = 5
+        },
+    },
+    {
         rule = {},
         properties = {
             border_width = 0,
@@ -669,14 +654,20 @@ awful.rules.rules = {
         properties = { floating = true }
     },
 
+    --[[
     -- Add titlebars to normal clients and dialogs
-    --{ rule_any = {type = { "normal", "dialog" }
-    --  }, properties = { titlebars_enabled = true }
-    --},
+    { rule_any = {type = { "normal", "dialog" }
+      }, properties = { titlebars_enabled = true }
+    },
+    --]]
 
     -- Set Firefox to always map on the tag named "2" on screen 1.
-    -- { rule = { class = "Firefox" },
-    --   properties = { screen = 1, tag = "2" } },
+    --[[
+    {
+        rule = { class = "Brave" },
+        properties = { screen = 1, tag = 5 }
+    },
+    ]]
 }
 -- }}}
 
@@ -749,10 +740,18 @@ client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_n
 beautiful.useless_gap = 15
 
 --os.execute("~/.fehbg &")
-awful.spawn.with_shell("~/.fehbg &")
-awful.spawn.with_shell("picom &")
-awful.spawn.with_shell("xrandr --output 'HDMI-0' --auto --output 'DVI-D-0' --right-of 'HDMI-0' &")
-awful.spawn.with_shell("xsetwacom set 17 MapToOutput 1920x1080+0+0 &")
-awful.spawn.with_shell("xsetwacom set 17 Rotate half &")
+awful.spawn.with_shell("~/.fehbg && picom")
 
 -- Autorun programs
+awful.spawn.with_shell(
+    'if (xrdb -query | grep -q "^awesome\\.started:\\s*true$"); then exit; fi;' ..
+    'xrdb -merge <<< "awesome.started:true";' ..
+    -- list each of your autostart commands, followed by ; inside single quotes, followed by ..
+    browser .. ' &' ..
+    terminal .. ' --hold -e tmux new-session &' ..
+    "xrandr --output 'HDMI-0' --auto --output 'DVI-D-0' --right-of 'HDMI-0' &" ..
+    "xsetwacom set 17 MapToOutput 1920x1080+0+0 && xsetwacom set 17 Rotate half" ..
+
+    --
+    'dex --environment Awesome --autostart'
+)

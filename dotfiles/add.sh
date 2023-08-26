@@ -12,7 +12,6 @@
 /usr/bin/git --git-dir=$HOME/dotfiles/ --work-tree=$HOME add $HOME/.config/my-scripts
 /usr/bin/git --git-dir=$HOME/dotfiles/ --work-tree=$HOME add $HOME/.fehbg
 /usr/bin/git --git-dir=$HOME/dotfiles/ --work-tree=$HOME add $HOME/.bashrc
-/usr/bin/git --git-dir=$HOME/dotfiles/ --work-tree=$HOME add $HOME/.local/share/tmux/resurrect/template.txt
 
 /usr/bin/git --git-dir=$HOME/dotfiles/ --work-tree=$HOME commit 
 /usr/bin/git --git-dir=$HOME/dotfiles/ --work-tree=$HOME push 
