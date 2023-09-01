@@ -7,10 +7,10 @@ mkdir ~/.config/X11
 '
 cd ~/dotfiles/
 cp -r home/.* ~
-cp root/* /
+sudo -r cp root/* /
 
 #Arch installd dependencies
-pacman -S xorg-xinit xorg-server awesome alacritty neovim feh rofi xclip xdotools fzf tmux keepassxc
+sudo pacman -S xorg-xinit xorg-server awesome alacritty neovim feh rofi xclip xdotools fzf tmux keepassxc ttf-jetbrains-mono-nerd xorg-xrandr
 #setup yay
 cd /tmp
 git clone https://aur.archlinux.org/yay.git
@@ -18,5 +18,5 @@ cd yay
 makepkg -si
 cd 
 
-yay -S xdotool brave-bin #as i said picom
+yay -S brave-bin  #as i said picom
 #gotta look into picom later

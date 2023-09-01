@@ -1,22 +1,21 @@
 -- https://learnxinyminutes.com/docs/lua/
+--
 -- Set <space> as the leader key
 -- See `:help mapleader`
 --  NOTE: Must happen before plugins are required (otherwise wrong leader will be used)
-
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
---messin with lualine theme
 
-local lazy_setup = require('lazy_setup')
-lazy_setup.setup()
+-- ok learning if i use stinky old vimscript plugins source the config before sourcing the plugininstAller
+require('plugins.vimwiki')
+require('plugins.ale')
 
-require('live-server').setup()
+require('lazy_setup')
 
-vim.keymap.set('n', '<leader>lss', require('live-server').start)
-vim.keymap.set('n', '<leader>ls', require('live-server').stop)
+require('plugins.liveserver')
 
-vim.opt.termguicolors = true
+
 
 vim.g.netrw_hide = 1
 vim.g.netrw_list_hide = [[\(^\|\s\s\)\zs\.\S\+]] --"\(^\|\s\s\)\zs\.\S\+"
@@ -33,6 +32,8 @@ vim.o.smartindent = true
 vim.o.shiftwidth = 2
 
 vim.o.relativenumber = true
+
+vim.opt.termguicolors = true
 
 
 
