@@ -2,29 +2,39 @@ alias config='$HOME/dotfiles/config.sh'
 alias scrape='$HOME/Music/papa/.scrape.sh'
 alias vim='nvim'
 alias leetcode='source $HOME/.config/my-scripts/leetcode/leetcode-time.sh'
+alias draw='$HOME/.config/my-scripts/draw/lets-draw.sh'
+alias startx='startx ~/.config/X11/xinitrc'
+
 #some other change
 
-alias tt='$HOME/dotfiles/tt.sh'
 HISTSIZE=HISTFILESIZE=
 set -o vi
 export VISUAL=nvim
 export EDITOR=nvim
-source /usr/share/doc/fzf/examples/key-bindings.bash
-source /usr/share/bash-completion/completions/fzf      
+source /usr/share/fzf/key-bindings.bash
+source /usr/share/fzf/completion.bash
 
 export FZF_DEFAULT_OPTS='--color=fg:#f8f8f2,hl:#bd93f9 --color=fg+:#f8f8f2,hl+:#bd93f9 --color=info:#ffb86c,prompt:#50fa7b,pointer:#ff79c6 --color=marker:#ff79c6,spinner:#ffb86c,header:#6272a4'
 
 export PS1="\[\e[35m\][\[\e[m\]\[\e[36m\]\A\[\e[m\]\[\e[35m\]]\[\e[m\]\[\e[32m\]\`parse_git_branch\`\[\e[m\]\[\e[35m\]*\[\e[m\]\[\e[34m\]\w\[\e[m\] "
 
+
+#case insensitive autocompletion
+if [ ! -a ~/.inputrc ]; then echo '$include /etc/inputrc' > ~/.inputrc; fi
+echo 'set completion-ignore-case On' >> ~/.inputrc
+
+#lscolors
+export LS_OPTIONS='--color=auto'
+eval "$(dircolors -b)"
+alias ls='ls $LS_OPTIONS'
+
 # Created by `pipx` on 2023-07-28 15:17:56
 export PATH="$PATH:/home/productiveuser/.local/bin"
-
-
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-. "$HOME/.cargo/env"
+#. "$HOME/.cargo/env"
 
 
 # get current branch in git repo

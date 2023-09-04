@@ -9,7 +9,7 @@ window:
 font:
   normal:
     family: JetBrainsMono Nerd Font
-  size: 14
+  size: 10
 scrolling:
   # Maximum number of lines in the scrollback buffer.
   # Specifying '0' will disable scrolling.

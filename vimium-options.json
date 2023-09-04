@@ -2,14 +2,6 @@
   "settingsVersion": "1.67.7",
   "exclusionRules": [
     {
-      "pattern": "https?://127.0.0.1:8080/*",
-      "passKeys": "dh"
-    },
-    {
-      "pattern": "https?://leetcode.com/*",
-      "passKeys": ""
-    },
-    {
       "pattern": "https?://127.0.0.1:37499/*",
       "passKeys": "dw"
     }

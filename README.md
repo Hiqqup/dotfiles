@@ -35,4 +35,4 @@ gotta add bootstrap in order to install packages
 
 -tmux
 
-
+-gtk

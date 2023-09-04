@@ -1,4 +1,5 @@
 -- If LuaRocks is installed, make sure that packages installed through it are found (e.g. lgi). If LuaRocks is not installed, do nothing.
+--
 pcall(require, "luarocks.loader")
 
 -- Standard awesome library
@@ -56,7 +57,7 @@ beautiful.init(gears.filesystem.get_themes_dir() .. "default/theme.lua")
 
 -- This is used later as the default terminal and editor to run.
 terminal = "alacritty"
-browser = 'brave-browser';
+browser = 'brave';
 --browser = "google-chrome"
 --browser = "chromium"
 --browser = "firefox"
@@ -367,10 +368,8 @@ end
 -- {{{ Key bindings
 globalkeys = gears.table.join(
     awful.key({ "Mod4" }, "3", function() awful.util.spawn_with_shell(browser .. " &") end),
-    awful.key({ "Mod4" }, "1", function() awful.util.spawn_with_shell("rofi -show drun &") end),
-    awful.key({ "Mod4" }, "4", function() awful.util.spawn_with_shell("obsidian &") end),
+    awful.key({ "Mod4" }, "1", function() awful.util.spawn_with_shell("rofi -show drun") end),
     awful.key({ "Mod4" }, "s", function() autostart() end),
-    awful.key({ "Mod4" }, "t", function() test() end),
     awful.key({ "Mod4", "Shift" }, "s", function() awful.util.spawn_with_shell("spectacle -c &") end),
     awful.key({ modkey, "Mod4", "Control" }, "h", function() awful.util.spawn_with_shell("systemctl suspend &") end),
     awful.key({ modkey, }, "b",
@@ -523,9 +522,43 @@ clientkeys = gears.table.join(
             c.maximized_horizontal = not c.maximized_horizontal
             c:raise()
         end,
-        { description = "(un)maximize horizontally", group = "client" })
+        { description = "(un)maximize horizontally", group = "client" }),
+
+
+    awful.key({}, "XF86AudioMute", function()
+        awful.spawn.with_shell("amixer -q set Master toggle", false)
+    end),
+    awful.key({}, "XF86AudioLowerVolume", function()
+        awful.spawn.with_shell("amixer -q set Master 5%-", false)
+    end),
+    awful.key({}, "XF86AudioRaiseVolume", function()
+        awful.spawn.with_shell("amixer -q set Master 5%+", false)
+    end),
+    awful.key({}, "XF86AudioMicMute", function()
+        awful.spawn.with_shell("amixer -q set Capture toggle", false)
+    end),
+
+
+    awful.key({}, "XF86MonBrightnessUp", function()
+        awful.spawn.with_shell("sudo xbacklight -inc 1", false) -- Adjust the step size (e.g., 10) as needed
+    end),
+    awful.key({}, "XF86MonBrightnessDown", function()
+        awful.spawn.with_shell("sudo xbacklight -dec 1", false) -- Adjust the step size (e.g., 10) as needed
+    end),
+
+    awful.key({ "Shift" }, "XF86MonBrightnessUp", function()
+        awful.spawn.with_shell("sudo xbacklight -inc 0.1", false) -- Adjust the step size (e.g., 10) as needed
+    end),
+    awful.key({ "Shift" }, "XF86MonBrightnessDown", function()
+        awful.spawn.with_shell("sudo xbacklight -dec 0.1", false) -- Adjust the step size (e.g., 10) as needed
+    end)
+
+--the ungodly extra keys
+--o
 )
 
+--------------
+------------
 -- Bind all key numbers to tags.
 -- Be careful: we use keycodes to make it work on any keyboard layout.
 -- This should map on the top row of your keyboard, usually 1 to 9.
@@ -599,14 +632,6 @@ root.keys(globalkeys)
 awful.rules.rules = {
     -- All clients will match this rule.
     {
-        rule = {
-            class = "test"
-        },
-        properties = {
-            screen = 1, tag = 5
-        },
-    },
-    {
         rule = {},
         properties = {
             border_width = 0,
@@ -662,12 +687,15 @@ awful.rules.rules = {
     --]]
 
     -- Set Firefox to always map on the tag named "2" on screen 1.
-    --[[
     {
-        rule = { class = "Brave" },
-        properties = { screen = 1, tag = 5 }
+        rule = { class = "draw" },
+        properties = { tag = "2" }
     },
-    ]]
+
+    {
+        rule = { class = "feh" },
+        properties = { tag = "9" }
+    },
 }
 -- }}}
 
@@ -737,10 +765,10 @@ client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_n
 
 
 --Custom settings
-beautiful.useless_gap = 15
-
+beautiful.bg_normal = "#000000"
 --os.execute("~/.fehbg &")
-awful.spawn.with_shell("~/.fehbg && picom")
+awful.spawn.with_shell("feh --bg-fill --randomize ~/Images/bg/*")
+
 
 -- Autorun programs
 awful.spawn.with_shell(
@@ -748,9 +776,10 @@ awful.spawn.with_shell(
     'xrdb -merge <<< "awesome.started:true";' ..
     -- list each of your autostart commands, followed by ; inside single quotes, followed by ..
     browser .. ' &' ..
-    terminal .. ' --hold -e tmux new-session &' ..
-    "xrandr --output 'HDMI-0' --auto --output 'DVI-D-0' --right-of 'HDMI-0' &" ..
-    "xsetwacom set 17 MapToOutput 1920x1080+0+0 && xsetwacom set 17 Rotate half" ..
+    terminal .. ' --hold -e $HOME/.config/my-scripts/start-the-fun.sh &' ..
+    ' xinput set-prop 10 "libinput Natural Scrolling Enabled" 1' ..
+
+
 
     --
     'dex --environment Awesome --autostart'
