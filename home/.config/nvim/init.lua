@@ -14,17 +14,19 @@ require('plugins.ale')
 require('lazy_setup')
 
 require('plugins.liveserver')
-
+require('plugins.lualine');
 
 
 vim.g.netrw_hide = 1
 vim.g.netrw_list_hide = [[\(^\|\s\s\)\zs\.\S\+]] --"\(^\|\s\s\)\zs\.\S\+"
 vim.g.netrw_bufsettings = "noma nomod renu nobl nowrap ro nornu"
 vim.keymap.set('n', '<leader>e', "<cmd>Ex<CR>")
---messin some more with lualine
 
-require('plugins.lualine');
+vim.keymap.set("n", "<leader>rmc", "<cmd>call delete(expand('%'))<CR>")
 
+vim.keymap.set("n", "<leader>tnw", "<cmd>!tmux new-window -c %:p:h<CR>")
+vim.keymap.set("n", "<leader>tsh", "<cmd>!tmux split-window -h -c %:p:h<CR>")
+vim.keymap.set("n", "<leader>tss", "<cmd>!tmux split-window -h -p 25 -c %:p:h<CR>")
 --messin with tabstop
 vim.o.tabstop = 2;
 vim.o.expandtab = true
@@ -34,8 +36,6 @@ vim.o.shiftwidth = 2
 vim.o.relativenumber = true
 
 vim.opt.termguicolors = true
-
-
 
 -- [[ Setting options ]]
 -- See `:help vim.o`
@@ -162,8 +162,13 @@ local servers = {
   -- gopls = {},
   -- pyright = {},
   -- rust_analyzer = {},
+  emmet_ls = {},
   tsserver = {},
   bashls = {},
+  html = {},
+  cssls = {},
+  cssmodules_ls = {},
+  custom_elements_ls = {},
 
   lua_ls = {
     Lua = {
