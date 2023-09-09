@@ -1,5 +1,6 @@
 alias config='$HOME/dotfiles/config.sh'
 alias scrape='$HOME/Music/papa/.scrape.sh'
+#alias vim='nvim -u ~/projects/nvim-rewrite/init.lua'
 alias vim='nvim'
 alias leetcode='source $HOME/.config/my-scripts/leetcode/leetcode-time.sh'
 alias draw='$HOME/.config/my-scripts/draw/lets-draw.sh'
