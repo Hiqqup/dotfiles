@@ -18,7 +18,7 @@ require("lazy").setup(
         require("plugins.lsp-plugins"),
         require("plugins.telescope"),
         require("plugins.treesitter"),
-        require("plugins.obsidian"),
+        require("plugins.obsidian").plugin,
     },
     {
         defaults = {

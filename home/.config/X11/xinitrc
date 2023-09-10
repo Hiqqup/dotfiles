@@ -1,1 +1,2 @@
+xmodmap ~/.config/X11/Xmodmap &
 exec awesome

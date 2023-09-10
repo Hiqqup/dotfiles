@@ -32,7 +32,7 @@ else
   xournalpp --class=draw .$1.xopp &>/dev/null
   case "$format" in
     "svg")
-      e   xournalpp .$1.xopp -i $1.svg --export-no-background &>/dev/null
+       xournalpp .$1.xopp -i $1.svg --export-no-background &>/dev/null
       ;;
     "png")
       xournalpp .$1.xopp -i $1.png --export-no-background --export-png-dpi 72 &>/dev/null
@@ -43,4 +43,6 @@ else
   esac
 
   echo "Finished drawing and converted to $format"
+
+
 fi

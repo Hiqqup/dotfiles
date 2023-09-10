@@ -1,12 +1,4 @@
-
-keycode 113 = XF86AudioMute	
-keycode 114 = XF86AudioLowerVolume	
-keycode 115 = XF86AudioRaiseVolume	
-keycode 190 = XF86AudioMicMute	
-keycode 224 = XF86MonBrightnessDown	
-keycode 225 = XF86MonBrightnessUp	
-keycode 227 = XF86Display	 
-keycode 171 = XF86Tools	 
-keycode 237 = XF86Bluetooth	
-keycode 374 = XF86Keyboard	
-keycode 156 = XF86Favorites	
+clear Lock
+keysym Escape = grave asciitilde
+keysym grave = Escape
+add Lock = Caps_Lock

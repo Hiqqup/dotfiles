@@ -6,12 +6,19 @@ return {
         dependencies = {
             "williamboman/mason.nvim",
             "williamboman/mason-lspconfig.nvim",
-            --autocomplete
-            --highlighting
             'folke/neodev.nvim',
 
             --icons
-            'nvim-tree/nvim-web-devicons'
+            'nvim-tree/nvim-web-devicons',
+            --snippets
+            {
+                'hrsh7th/cmp-nvim-lsp',
+                --guess i gotta learn LuaSnip at some point
+                --dependencies = {
+                --    'L3MON4D3/LuaSnip',
+                --    'saadparwaiz1/cmp_luasnip',
+                --},
+            },
         },
         config = function()
             require("lsp.lsp");
@@ -33,12 +40,6 @@ return {
     {
         'hrsh7th/nvim-cmp',
         event = "InsertEnter",
-        dependencies = {
-            'hrsh7th/cmp-nvim-lsp',
-            --guess i gotta learn LuaSnip at some point
-            'L3MON4D3/LuaSnip',
-            'saadparwaiz1/cmp_luasnip',
-        },
         config = function()
             require("lsp.snip");
         end
