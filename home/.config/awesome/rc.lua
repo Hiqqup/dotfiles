@@ -778,6 +778,8 @@ awful.spawn.with_shell(
     browser .. ' &' ..
     terminal .. ' --hold -e $HOME/.config/my-scripts/start-the-fun.sh &' ..
     ' xinput set-prop 10 "libinput Natural Scrolling Enabled" 1' ..
+    "xrandr -s 1920x1080 && xrandr --output HDMI-2 --auto" ..
+
 
 
 

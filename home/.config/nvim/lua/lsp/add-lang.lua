@@ -56,8 +56,8 @@ M.setup = function()
         vim.cmd("LspInstall");
     end, {})
 end
---server configuration
 M.filetypes = read()
+--server configuration
 M.servers = {
 }
 

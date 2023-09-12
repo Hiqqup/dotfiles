@@ -1,3 +1,5 @@
 return {
-"lua"
+"lua",
+"javascript",
+"sh"
 }

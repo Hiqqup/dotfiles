@@ -23,7 +23,6 @@ if [ "$format" = "mv" ]; then
     mv .$1.xopp .$3.xopp
   fi
 else
-  # Check if .$1.xopp does not exist
   if [ ! -e ".$1.xopp" ]; then
     cp ~/.config/my-scripts/draw/template.xopp .$1.xopp
   fi

@@ -9,7 +9,6 @@ vim.keymap.set('n', '<leader>e', "<cmd>Ex<CR>")
 
 vim.keymap.set("n", "<leader>rmc", "<cmd>call delete(expand('%'))<CR>")
 
-require("tmux");
 
 --this keeps the lsp from overwriting treesitter
 --vim.highlight.priorities.semantic_tokens = 99

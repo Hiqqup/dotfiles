@@ -5,8 +5,6 @@ return {
         lazy = true,
         cmd = {
             "ObsidianNew",
-            "ObsidianSearch",
-
         },
         event = {
             "BufReadPre " .. vaultdir .. "/**.md",
@@ -39,16 +37,8 @@ return {
     },
 
     setup = function()
-        local builtin = require('telescope.builtin')
-        vim.keymap.set('n', '<leader>on',
-            function()
-                builtin.find_files({
-                    cdw = vim.g.vaultdir,
-                })
-            end,
-            { desc = "search or create [o]bsidian [n]ote" })
+        vim.keymap.set('n', '<leader>on', function()
+            require("obsidian.telescope-create-picker")();
+        end, { desc = "search or create [o]bsidian [n]ote" })
     end,
-    create = function()
-        print("hello form obsidian");
-    end
 }
