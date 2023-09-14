@@ -11,7 +11,7 @@ local attach_mappings = function(prompt_bufnr, map)
         actions.close(prompt_bufnr)
         local selection = actions_state.get_current_line()
         --if selection ~= nil and selection ~= "" then
-        vim.cmd("ObsidianNew " .. selection .. ".md");
+        vim.cmd("ObsidianNew notes/" .. selection .. ".md");
         --end
     end)
     return true

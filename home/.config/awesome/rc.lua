@@ -370,7 +370,8 @@ globalkeys = gears.table.join(
     awful.key({ "Mod4" }, "3", function() awful.util.spawn_with_shell(browser .. " &") end),
     awful.key({ "Mod4" }, "1", function() awful.util.spawn_with_shell("rofi -show drun") end),
     awful.key({ "Mod4" }, "s", function() autostart() end),
-    awful.key({ "Mod4", "Shift" }, "s", function() awful.util.spawn_with_shell("spectacle -c &") end),
+    awful.key({ "Mod4", "Shift" }, "s",
+        function() awful.util.spawn_with_shell("~/.config/my-scripts/screen-clip-area.sh &") end),
     awful.key({ modkey, "Mod4", "Control" }, "h", function() awful.util.spawn_with_shell("systemctl suspend &") end),
     awful.key({ modkey, }, "b",
         function() awful.screen.connect_for_each_screen(function(s) s.mywibox.visible = not s.mywibox.visible; end) end),
@@ -691,11 +692,15 @@ awful.rules.rules = {
         rule = { class = "draw" },
         properties = { tag = "2" }
     },
-
     {
-        rule = { class = "feh" },
-        properties = { tag = "9" }
+        rule = { class = "game" },
+        properties = { tag = "2" }
     },
+
+    --{
+    --    rule = { class = "feh" },
+    --    properties = { tag = "9" }
+    --},
 }
 -- }}}
 
@@ -777,12 +782,7 @@ awful.spawn.with_shell(
     -- list each of your autostart commands, followed by ; inside single quotes, followed by ..
     browser .. ' &' ..
     terminal .. ' --hold -e $HOME/.config/my-scripts/start-the-fun.sh &' ..
-    ' xinput set-prop 10 "libinput Natural Scrolling Enabled" 1' ..
-    "xrandr -s 1920x1080 && xrandr --output HDMI-2 --auto" ..
-
-
-
-
-    --
+    --' xinput set-prop 10 "libinput Natural Scrolling Enabled" 1' ..
+    --"xrandr -s 1920x1080 && xrandr --output HDMI-2 --auto" ..
     'dex --environment Awesome --autostart'
 )

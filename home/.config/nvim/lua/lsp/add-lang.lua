@@ -1,5 +1,15 @@
-local M       = {};
-local initDir = debug.getinfo(1, 'S').source:sub(2):match("(.*[/\\])");
+local M = {};
+function getScriptDirectory()
+    local scriptPath = arg[0] or debug.getinfo(1, 'S').source
+    local scriptDir = scriptPath:match("@?(.*[/\\])")
+    if not scriptDir then
+        vim.api.nvim_err_writeln("Failed to find direcoty")
+    end
+    return scriptDir
+end
+
+local initDir = getScriptDirectory();
+--print(initDir);
 local function read()
     local file = io.open(initDir .. "data.langs", "r")
 

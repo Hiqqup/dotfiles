@@ -1,2 +1,2 @@
 #!/bin/sh
-feh --no-fehbg --bg-fill '/home/ju/Images/bg/tatamiUmbrella.jpg' '/home/ju/Images/bg/totoroRiver.jpg' 
+feh --no-fehbg --bg-fill '/home/ju/Images/bg/totoroRiver.jpg' '/home/ju/Images/bg/tatamiUmbrella.jpg' 

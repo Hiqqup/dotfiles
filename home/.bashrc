@@ -6,6 +6,7 @@ alias leetcode='source $HOME/.config/my-scripts/leetcode/leetcode-time.sh'
 alias draw='$HOME/.config/my-scripts/draw/lets-draw.sh'
 alias startx='startx ~/.config/X11/xinitrc'
 
+#ill go to hell for this probably
 #some other change
 
 HISTSIZE=HISTFILESIZE=

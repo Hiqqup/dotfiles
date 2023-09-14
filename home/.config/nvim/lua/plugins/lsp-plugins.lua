@@ -1,7 +1,7 @@
 return {
     {
         'neovim/nvim-lspconfig',
-        cmd = "AddLSP",
+        cmd = { "AddLSP", "AddFT" },
         ft = require("lsp.add-lang").filetypes,
         dependencies = {
             "williamboman/mason.nvim",
@@ -13,16 +13,15 @@ return {
             --snippets
             {
                 'hrsh7th/cmp-nvim-lsp',
-                --guess i gotta learn LuaSnip at some point
-                --dependencies = {
-                --    'L3MON4D3/LuaSnip',
-                --    'saadparwaiz1/cmp_luasnip',
-                --},
+                dependencies = {
+                    'L3MON4D3/LuaSnip',
+                    'saadparwaiz1/cmp_luasnip',
+                },
             },
         },
         config = function()
-            require("lsp.lsp");
             require("lsp.add-lang").setup();
+            require("lsp.lsp");
         end
     },
     {

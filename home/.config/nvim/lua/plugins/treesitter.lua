@@ -8,7 +8,7 @@ end
 return {
     "nvim-treesitter/nvim-treesitter",
     ft = newFiletypes,
-    cmd = "AddLSP",
+    cmd = { "AddLSP", "AddFT" },
     config = function()
         local configs = require("nvim-treesitter.configs")
 
