@@ -1,10 +1,10 @@
 alias config='$HOME/dotfiles/config.sh'
-alias scrape='$HOME/Music/papa/.scrape.sh'
-#alias vim='nvim -u ~/projects/nvim-rewrite/init.lua'
+alias music='yt-dlp --extract-audio --embed-metadata https://youtu.be/VLtSCBSaCIQ?si=RxCyaijpXklBFLlu'
 alias vim='nvim'
 alias leetcode='source $HOME/.config/my-scripts/leetcode/leetcode-time.sh'
 alias draw='$HOME/.config/my-scripts/draw/lets-draw.sh'
 alias startx='startx ~/.config/X11/xinitrc'
+alias syncnotes='$HOME/.config/my-scripts/sync-notes.sh'
 
 #ill go to hell for this probably
 #some other change
@@ -33,7 +33,6 @@ alias ls='ls $LS_OPTIONS'
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-#. "$HOME/.cargo/env"
 
 
 # get current branch in git repo

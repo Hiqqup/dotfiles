@@ -4,5 +4,6 @@ return {
 "sh",
 "typescript",
 "html",
-"c"
+"c",
+"go"
 }

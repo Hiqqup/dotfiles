@@ -369,6 +369,7 @@ end
 globalkeys = gears.table.join(
     awful.key({ "Mod4" }, "3", function() awful.util.spawn_with_shell(browser .. " &") end),
     awful.key({ "Mod4" }, "1", function() awful.util.spawn_with_shell("rofi -show drun") end),
+    awful.key({ "Mod4" }, "4", function() awful.util.spawn_with_shell("obsidian & ") end),
     awful.key({ "Mod4" }, "s", function() autostart() end),
     awful.key({ "Mod4", "Shift" }, "s",
         function() awful.util.spawn_with_shell("~/.config/my-scripts/screen-clip-area.sh &") end),
@@ -696,7 +697,10 @@ awful.rules.rules = {
         rule = { class = "game" },
         properties = { tag = "2" }
     },
-
+    {
+        rule = { class = "obsidian" },
+        properties = { tag = "4" }
+    },
     --{
     --    rule = { class = "feh" },
     --    properties = { tag = "9" }
