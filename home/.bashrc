@@ -4,7 +4,7 @@ alias vim='nvim'
 alias leetcode='source $HOME/.config/my-scripts/leetcode/leetcode-time.sh'
 alias draw='$HOME/.config/my-scripts/draw/lets-draw.sh'
 alias startx='startx ~/.config/X11/xinitrc'
-alias syncnotes='$HOME/.config/my-scripts/sync-notes.sh'
+alias mvatt='$HOME/.config/my-scripts/mv-to-att.sh'
 
 #ill go to hell for this probably
 #some other change

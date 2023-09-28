@@ -20,6 +20,7 @@ require("lazy").setup(
         require("plugins.treesitter"),
         require("plugins.cmp"),
         require("obsidian.markdown-preview"),
+        require("plugins.latex"),
     },
     {
         defaults = {

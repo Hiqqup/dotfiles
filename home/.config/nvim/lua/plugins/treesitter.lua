@@ -16,6 +16,7 @@ return {
             ensure_installed = {
                 "markdown",
                 "markdown_inline",
+                "latex",
             },
             auto_install = true,
             sync_install = false,
