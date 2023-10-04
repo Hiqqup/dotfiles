@@ -5,6 +5,7 @@ alias leetcode='source $HOME/.config/my-scripts/leetcode/leetcode-time.sh'
 alias draw='$HOME/.config/my-scripts/draw/lets-draw.sh'
 alias startx='startx ~/.config/X11/xinitrc'
 alias mvatt='$HOME/.config/my-scripts/mv-to-att.sh'
+alias pushnotes='cd ~/5head && git add . && git commit && git push && cd -'
 
 #ill go to hell for this probably
 #some other change

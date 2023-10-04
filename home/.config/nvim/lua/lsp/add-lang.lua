@@ -69,10 +69,6 @@ end
 M.filetypes = read()
 --server configuration
 M.servers = {
-    cmd = {
-        "clangd",
-        "--fallback-style=webkit"
-    }
 }
 
 return M

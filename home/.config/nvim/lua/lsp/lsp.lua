@@ -5,7 +5,6 @@ require("mason").setup({});
 local masonLsp = require 'mason-lspconfig'
 servers = require("lsp.add-lang").servers;
 masonLsp.setup({})
-
 masonLsp.setup_handlers {
     function(server_name)
         require('lspconfig')[server_name].setup {
@@ -16,4 +15,14 @@ masonLsp.setup_handlers {
     end,
 }
 
+--- idk a little bit uggly guess i dont know how to do better for now
+require("lspconfig").clangd.setup {
+    capabilities = capabilities,
+    on_attach = require("lsp.on_attach"),
+    cmd = {
+        "clangd",
+        "--fallback-style=webkit"
+    }
+}
+---
 require("lsp.lsp-format");
