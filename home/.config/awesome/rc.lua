@@ -776,7 +776,7 @@ client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_n
 --Custom settings
 beautiful.bg_normal = "#000000"
 --os.execute("~/.fehbg &")
-awful.spawn.with_shell("feh --bg-fill --randomize ~/Images/bg/*")
+awful.spawn.with_shell("feh --bg-fill --randomize ~/Images/*")
 
 
 -- Autorun programs

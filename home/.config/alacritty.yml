@@ -1,7 +1,7 @@
 font:
   normal:
     family: JetBrainsMono Nerd Font
-  size: 10
+  size: 16
 scrolling:
   # Maximum number of lines in the scrollback buffer.
   # Specifying '0' will disable scrolling.
@@ -71,3 +71,4 @@ colors:
 
 key_bindings:
   - { key: Back, mods: Control, chars: "\u0017" }
+  - { key: L, mods: Control,  action: ClearLogNotice }

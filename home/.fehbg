@@ -1,2 +1,2 @@
 #!/bin/sh
-feh --no-fehbg --bg-fill '/home/ju/Images/bg/tatamiUmbrella.jpg' '/home/ju/Images/bg/totoroRiver.jpg' 
+feh --no-fehbg --bg-fill '/home/ju/Images/bight-sunshine.png' '/home/ju/Images/minecraft.png' '/home/ju/Images/ghibli-golem.jpg' '/home/ju/Images/big-ozu.jpg' '/home/ju/Images/just-a-pole.jpg' '/home/ju/Images/tatami-artysy.jpg' '/home/ju/Images/landscape-yellow.jpg' '/home/ju/Images/totoro-fishing.jpg' '/home/ju/Images/spirited-away-ducks.jpg' '/home/ju/Images/totoro-rain.jpg' 

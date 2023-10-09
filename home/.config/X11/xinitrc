@@ -1,2 +1,3 @@
-xmodmap ~/.config/X11/Xmodmap &
+#xmodmap ~/.config/X11/Xmodmap &
+~/.fehbg &
 exec awesome
