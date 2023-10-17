@@ -1,4 +1,4 @@
-vim.g.vaultdir = vim.fn.expand "~" .. "/5head";
+vim.g.vaultdir = vim.fn.expand "~" .. "/notes";
 require("vanilla");
 require("lazy-setup");
 require("tmux");

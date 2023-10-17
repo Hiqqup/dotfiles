@@ -3,7 +3,7 @@ if [ $# -eq 0 ]
 then
     echo "No arguments supplied"
 else
-    cd ~/Documents/leetcode/
+    cd ~/leetcode/js/
     mkdir $1
     cd $1 
     #draw thoughts &
