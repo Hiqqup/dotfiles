@@ -1,0 +1,4 @@
+clear Lock
+keysym Escape = grave asciitilde
+keysym grave = Escape
+add Lock = Caps_Lock
