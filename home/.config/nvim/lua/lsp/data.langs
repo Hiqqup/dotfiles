@@ -5,5 +5,7 @@ return {
 "typescript",
 "html",
 "c",
-"go"
+"go",
+"plaintex",
+"java"
 }

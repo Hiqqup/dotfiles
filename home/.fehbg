@@ -1,2 +1,2 @@
 #!/bin/sh
-feh --no-fehbg --bg-fill '/home/ju/Images/undertale.jpg' '/home/ju/Images/totoro-fishing.jpg' '/home/ju/Images/watch-that-anime.png' '/home/ju/Images/tatami-artysy.jpg' '/home/ju/Images/ghibli-golem.jpg' '/home/ju/Images/landscape-yellow.jpg' '/home/ju/Images/totoro-rain.jpg' 
+feh --no-fehbg --bg-fill '/home/ju/Images/tatami-artysy.jpg' '/home/ju/Images/watch-that-anime.png' '/home/ju/Images/undertale.jpg' '/home/ju/Images/ghibli-golem.jpg' '/home/ju/Images/landscape-yellow.jpg' '/home/ju/Images/totoro-fishing.jpg' '/home/ju/Images/totoro-rain.jpg' 
