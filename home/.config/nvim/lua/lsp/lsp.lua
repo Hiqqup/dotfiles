@@ -6,7 +6,7 @@ local masonLsp = require 'mason-lspconfig'
 servers = require("lsp.add-lang").servers;
 masonLsp.setup({
     ensure_installed = {
-        "lua_ls", 
+        "lua_ls",
         "clangd",
         "tsserver",
         "bashls",
