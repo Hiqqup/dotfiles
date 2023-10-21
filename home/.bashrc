@@ -1,18 +1,19 @@
 alias config='$HOME/dotfiles/config.sh'
-alias music='yt-dlp --extract-audio --embed-metadata https://youtu.be/VLtSCBSaCIQ?si=RxCyaijpXklBFLlu'
+#alias music='yt-dlp --extract-audio --embed-metadata https://youtu.be/VLtSCBSaCIQ?si=RxCyaijpXklBFLlu'
 alias vim='nvim'
 alias leetcode='source $HOME/.config/my-scripts/leetcode/leetcode-time.sh'
 alias leetcodec='source $HOME/.config/my-scripts/leetcode/leetcode-c.sh'
 alias draw='$HOME/.config/my-scripts/draw/lets-draw.sh'
 alias startx='startx ~/.config/X11/xinitrc'
-alias mvatt='$HOME/.config/my-scripts/mv-to-att.sh'
-alias pushnotes='cd ~/5head && git add . && git commit && git push && cd -'
+
+alias swapescgrave='xmodmap  ~/.config/X11/Xmodmap'
 
 #ill go to hell for this probably
 #some other change
 
 HISTSIZE=HISTFILESIZE=
 set -o vi
+shopt -s autocd
 export VISUAL=nvim
 export EDITOR=nvim
 source /usr/share/fzf/key-bindings.bash

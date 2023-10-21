@@ -9,4 +9,6 @@ cd ~/.suckless/dmenu
 sudo make clean install
 #uni stuff gotta add the latex stuff all of it
 sudo pacman -S svn jre17-openjdk jdk17-openjdk texlive
+#hardware stuff for the t480
+sudo pacman -S xf86-video-intel
 
