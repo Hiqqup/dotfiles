@@ -19,7 +19,6 @@ require("lazy").setup(
         require("plugins.telescope"),
         require("plugins.treesitter"),
         require("plugins.cmp"),
-        require("obsidian.markdown-preview"),
         require("plugins.latex"),
     },
     {

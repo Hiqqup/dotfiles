@@ -6,6 +6,6 @@ return function()
     if string.match(selected_text, '^https?://') then
         vim.fn.system('brave ' .. selected_text)
     elseif string.match(selected_text, '%.pdf$') then
-        vim.fn.system('brave ' .. vim.g.vaultdir .. '/attachments/' .. selected_text)
+        vim.fn.system('zathura ' .. vim.g.vaultdir .. '/attachments/' .. selected_text)
     end
 end

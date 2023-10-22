@@ -1,5 +1,5 @@
 local M = {};
-function getScriptDirectory()
+local function getScriptDirectory()
     local scriptPath = arg[0] or debug.getinfo(1, 'S').source
     local scriptDir = scriptPath:match("@?(.*[/\\])")
     if not scriptDir then
