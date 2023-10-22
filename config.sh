@@ -2,4 +2,4 @@ cd ~/dotfiles
 ./add.sh
 git add .
 git commit 
-git push origin archpad
+git push origin archpad-reborn
