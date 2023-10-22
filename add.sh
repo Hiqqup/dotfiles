@@ -10,6 +10,5 @@ cp  -r $HOME/.config/suckless/st/patches home/.config/suckless/st
 cp -r $HOME/.config/X11 home/.config
 cp -r $HOME/.config/neofetch home/.config
 cp -r $HOME/.config/my-scripts home/.config
-cp -r $HOME/.dwm home/
 cp -r /etc/X11/xorg.conf.d root/X11/
 cp /etc/profile.d/startx.sh root/etc/profile.d
