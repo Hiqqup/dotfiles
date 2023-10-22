@@ -26,6 +26,7 @@ vim.keymap.set("n", "<C-k>", "<cmd>silent! !tmux select-pane -U<CR>")
 --vim.highlight.priorities.semantic_tokens = 99
 
 vim.o.autochdir = true
+vim.g.tex_flavor = 'latex'
 
 vim.o.tabstop = 4;
 vim.o.expandtab = true

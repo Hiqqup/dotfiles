@@ -15,7 +15,7 @@ return {
             "l3mon4d3/luasnip",
             "iurimateus/luasnip-latex-snippets.nvim",
         },
-        ft = { "markdown", "plaintex", },
+        ft = { "markdown", "tex" },
         config = function()
             require 'luasnip-latex-snippets'.setup({ use_treesitter = true })
             --nabla keymaps

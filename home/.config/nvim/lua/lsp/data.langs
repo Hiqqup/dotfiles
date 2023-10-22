@@ -6,6 +6,6 @@ return {
 "html",
 "c",
 "go",
-"plaintex",
-"java"
+"java",
+"tex"
 }
