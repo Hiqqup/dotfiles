@@ -13,4 +13,7 @@ sudo make clean install
 sudo pacman -S svn jre17-openjdk jdk17-openjdk texlive
 #hardware stuff for the t480
 sudo pacman -S xf86-video-intel tpacpi-bat
+#big dependencies
+sudo pacman -S mpv 
+
 

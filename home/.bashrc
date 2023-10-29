@@ -6,6 +6,10 @@ alias draw='$HOME/.config/my-scripts/draw/lets-draw.sh'
 alias startx='startx ~/.config/X11/xinitrc.sh'
 alias donut='~/.config/my-scripts/donut'
 alias latexHW='~/.config/my-scripts/latex/latex-hw.sh'
+alias xmodmap='xmodmap ~/.config/X11/Xmodmap'
+alias maptohdmi='xrandr --output HDMI2 --auto && xmodmap'
+alias mdToPdf='~/.config/my-scripts/latex/mdToPdf.sh'
+alias cdHw='source ~/hw/scripts/cd-current-week.sh'
 
 
 #ill go to hell for this probably

@@ -29,6 +29,10 @@ static const Rule rules[] = {
 	/* class      instance    title       tags mask     isfloating   monitor */
 	{ "Zathura",  NULL,       NULL,       2,            0,           -1 },
 	{ "Brave-browser",  NULL,       NULL,       4,            0,           -1 },
+	{ "Com.github.xournalpp.xournalpp",  NULL,       NULL,       2,            0,           -1 },
+	{ "draw",  NULL,       NULL,       2,            0,           -1 },
+
+
 };
 
 /* layout(s) */
@@ -61,7 +65,7 @@ static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont,
 static const char *termcmd[]  = { "st", NULL };
 
 
-//my shit now
+//my stuff now
 #define PRINT "/home/ju/.config/my-scripts/print.sh"
 static const char *screenshot[]  =	{"/home/ju/.config/my-scripts/scrot.sh", NULL };
 static const char *suspend[]  =	{"systemctl","suspend", NULL };
