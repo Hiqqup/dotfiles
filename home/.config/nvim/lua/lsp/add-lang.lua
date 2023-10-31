@@ -69,6 +69,25 @@ end
 M.filetypes = read()
 --server configuration
 M.servers = {
+    texlab = {
+        texlab = {
+            build = {
+                onSave = true,
+                forwardSearchAfter = true
+            },
+            forwardSearch = {
+                executable = "zathura",
+                args = { "--synctex-forward", "%l:1:%f", "%p" },
+            }
+        }
+    }
+}
+-- server commands
+M.cmds = {
+    clangd = {
+        "clangd",
+        "--fallback-style=webkit"
+    }
 }
 
 return M

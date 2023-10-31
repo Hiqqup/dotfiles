@@ -1,7 +1,7 @@
 delimiter=' | '
 status() {
 
-    grep "^\s*w" /proc/net/wireless | awk '{ print "",int($3 * 100 /70)}'
+    grep "^\s*w" /proc/net/wireless | awk '{ print " ",int($3 * 100 /70)}'
     sed "s/down//;s/up//" /sys/class/net/e*/operstate
     printf "$delimiter"
 

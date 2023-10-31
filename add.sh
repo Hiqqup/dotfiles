@@ -8,6 +8,7 @@ cp  $HOME/.config/suckless/st/config.h home/.config/suckless/st
 cp  -r $HOME/.config/suckless/dwm/patches home/.config/suckless/dwm
 cp  -r $HOME/.config/suckless/st/patches home/.config/suckless/st
 cp -r $HOME/.config/X11 home/.config
+cp -r $HOME/.config/zathura home/.config
 cp -r $HOME/.config/neofetch home/.config
 cp -r $HOME/.config/my-scripts home/.config
 cp -r /etc/X11/xorg.conf.d root/X11/
