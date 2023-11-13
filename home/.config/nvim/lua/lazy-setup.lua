@@ -20,6 +20,7 @@ require("lazy").setup(
         require("plugins.treesitter"),
         require("plugins.cmp"),
         require("plugins.latex"),
+        require("plugins.dap"),
     },
     {
         defaults = {

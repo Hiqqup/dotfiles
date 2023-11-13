@@ -10,15 +10,20 @@ end
 
 return {
     {
-        'jbyuki/nabla.nvim',
+        --"iurimateus/luasnip-latex-snippets.nvim",
+        --"hiqqup/luasnip-latex-snippets.nvim",
+
+        dir = "~/projects/luasnip-latex-snippets.nvim",
+
         dependencies = {
             "l3mon4d3/luasnip",
-            "iurimateus/luasnip-latex-snippets.nvim",
+            'jbyuki/nabla.nvim',
         },
         ft = { "markdown", "tex" },
         config = function()
             require 'luasnip-latex-snippets'.setup({ use_treesitter = true })
-            --nabla keymaps
+
+            --nabla keymaps=====
             vim.keymap.set('n', '<leader>p',
                 require('nabla').popup,
                 { desc = 'nabla [p]opup' })
@@ -28,6 +33,7 @@ return {
                     nablaToggle()
                 end,
                 { desc = '[n]abla [v]isual' })
+            --=================
         end,
     },
 }

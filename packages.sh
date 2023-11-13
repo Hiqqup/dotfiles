@@ -1,4 +1,4 @@
-sudo pacman -S xorg-xinit xorg-server neovim feh xclip xdotool fzf tmux ttf-jetbrains-mono-nerd xorg-xrandr xf86-input-wacom ripgrep syncthing alsa-utils openssh htop unzip xorg-xbacklight acpi scrot zathura-pdf-mupdf man-db cmake npm xorg-xsetroot yt-dlp
+sudo pacman -S xorg-xinit xorg-server neovim feh xclip xdotool fzf tmux ttf-jetbrains-mono-nerd xorg-xrandr xf86-input-wacom ripgrep syncthing alsa-utils openssh htop unzip xorg-xbacklight acpi scrot zathura-pdf-mupdf man-db cmake npm xorg-xsetroot yt-dlp ytfzf mpv dbus-python 
 
 #not sure if i want that
 sudo pacman -S keepassxc xournalpp

@@ -72,8 +72,17 @@ M.servers = {
     texlab = {
         texlab = {
             build = {
+                args = {
+                    "-pdf",
+                    "-interaction=nonstopmode",
+                    "-synctex=1",
+                    "%f",
+                    "-auxdir=.texlab/"
+                },
                 onSave = true,
-                forwardSearchAfter = true
+                forwardSearchAfter = true,
+                auxDirectory = "./.texlab",
+                logDirectory = "./.texlab",
             },
             forwardSearch = {
                 executable = "zathura",
