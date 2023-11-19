@@ -5,6 +5,7 @@ cp  $HOME/.gitconfig home
 cp  $HOME/.config/tmux/tmux.conf home/.config/tmux
 cp  $HOME/.config/suckless/dwm/config.h home/.config/suckless/dwm
 cp  $HOME/.config/suckless/st/config.h home/.config/suckless/st
+cp  -r $HOME/.config/xournalpp home/.config/
 cp  -r $HOME/.config/suckless/dwm/patches home/.config/suckless/dwm
 cp  -r $HOME/.config/suckless/st/patches home/.config/suckless/st
 cp -r $HOME/.config/X11 home/.config

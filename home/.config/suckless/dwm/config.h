@@ -29,7 +29,7 @@ static const Rule rules[] = {
     /* class      instance    title       tags mask     isfloating   monitor */
     { "Zathura", NULL, NULL, 2, 0, -1 },
     { "Brave-browser", NULL, NULL, 4, 0, -1 },
-    { "Com.github.xournalpp.xournalpp", NULL, NULL, 5, 0, -1 },
+    { "xournalpp", NULL, NULL, 5, 0, -1 },
     { "draw", NULL, NULL, 5, 0, -1 },
     { "mpv", NULL, NULL, 2, 0, -1 },
 

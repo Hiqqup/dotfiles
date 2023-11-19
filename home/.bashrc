@@ -1,3 +1,4 @@
+alias startwl='$HOME/.config/my-scripts/wl.sh'
 alias config='$HOME/dotfiles/config.sh'
 alias vim='nvim'
 alias leetcode='source $HOME/.config/my-scripts/leetcode/leetcode-time.sh'
