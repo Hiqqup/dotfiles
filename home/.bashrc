@@ -17,6 +17,7 @@ alias pabs-mkdir='source ~/hw/scripts/mkdir-java.sh'
 alias pabs-touch='source ~/hw/scripts/touch-java.sh'
 #alias to pipe into x clipboard
 alias clip='xclip -sel c'
+alias xournal='~/.config/xournalpp/xournalpp.sh'
 
 
 # dont look there is some unholy emacs goin on

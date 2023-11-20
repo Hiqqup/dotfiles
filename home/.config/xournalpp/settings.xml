@@ -14,16 +14,16 @@
   <property name="zoomStep" value="10"/>
   <property name="zoomStepScroll" value="2"/>
   <property name="displayDpi" value="72"/>
-  <property name="mainWndWidth" value="1054"/>
-  <property name="mainWndHeight" value="1050"/>
-  <property name="maximized" value="false"/>
+  <property name="mainWndWidth" value="1920"/>
+  <property name="mainWndHeight" value="1080"/>
+  <property name="maximized" value="true"/>
   <property name="showToolbar" value="true"/>
   <property name="showSidebar" value="false"/>
   <property name="sidebarWidth" value="141"/>
   <property name="sidebarNumberingStyle" value="1"/>
   <property name="sidebarOnRight" value="false"/>
   <property name="scrollbarOnLeft" value="false"/>
-  <property name="menubarVisible" value="true"/>
+  <property name="menubarVisible" value="false"/>
   <property name="filepathShownInTitlebar" value="false"/>
   <property name="numColumns" value="1"/>
   <property name="numRows" value="1"/>
@@ -173,6 +173,10 @@
       <attribute name="deviceClass" type="int" value="1"/>
       <attribute name="deviceSource" type="int" value="7"/>
     </data>
+    <data name="Wacom One by Wacom S Pen eraser">
+      <attribute name="deviceClass" type="int" value="3"/>
+      <attribute name="deviceSource" type="int" value="2"/>
+    </data>
     <data name="Wacom One by Wacom S Pen stylus">
       <attribute name="deviceClass" type="int" value="2"/>
       <attribute name="deviceSource" type="int" value="1"/>
@@ -231,7 +235,7 @@
       <attribute name="drawingType" type="string" value="default"/>
     </data>
     <data name="highlighter">
-      <attribute name="color" type="hex" value="ffffff00"/>
+      <attribute name="color" type="hex" value="000000"/>
       <attribute name="drawingType" type="string" value="default"/>
       <attribute name="fill" type="int" value="0"/>
       <attribute name="fillAlpha" type="int" value="128"/>
