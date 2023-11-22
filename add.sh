@@ -5,6 +5,7 @@ cp  $HOME/.gitconfig home
 cp  $HOME/.config/tmux/tmux.conf home/.config/tmux
 cp  $HOME/.config/suckless/dwm/config.h home/.config/suckless/dwm
 cp  $HOME/.config/suckless/st/config.h home/.config/suckless/st
+cp  $HOME/.config/brave-flags home/.config/
 cp  -r $HOME/.config/foot home/.config/
 cp  -r $HOME/.config/xournalpp home/.config/
 cp  -r $HOME/.config/suckless/dwm/patches home/.config/suckless/dwm
