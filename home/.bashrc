@@ -8,7 +8,7 @@ alias startx='startx ~/.config/X11/xinitrc.sh'
 alias donut='~/.config/my-scripts/donut'
 alias latexHw='~/.config/my-scripts/latex/latex-hw.sh'
 alias xmodmap='xmodmap ~/.config/X11/Xmodmap'
-alias maptohdmi='xrandr --output HDMI2 --auto && xmodmap'
+alias maptohdmi='xrandr --output HDMI2 --auto'
 alias mdToPdf='~/.config/my-scripts/latex/mdToPdf.sh'
 alias flipTablet='xsetwacom set 13 Rotate half' # to flip tablet number 17 may vary
 #pabs stuff
