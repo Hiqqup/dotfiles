@@ -1,5 +1,5 @@
 cd $HOME/dotfiles
-cp /etc/keyd/default.conf ~/dotfiles/root/etc/
+cp /etc/keyd/default.conf ~/dotfiles/root/etc/keyd/
 cp -r $HOME/.config/nvim/ home/.config
 cp  $HOME/.bashrc home
 cp  $HOME/.gitconfig home
