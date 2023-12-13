@@ -1,6 +1,8 @@
 alias startwl='$HOME/.config/my-scripts/wl.sh'
 alias config='$HOME/dotfiles/config.sh'
 alias vim='nvim'
+alias ogvim='/bin/vim'
+alias vimNoFormat='nvim +"set eventignore=BufWritePre"'
 alias leetcode='source $HOME/.config/my-scripts/leetcode/leetcode-time.sh'
 alias leetcodec='source $HOME/.config/my-scripts/leetcode/leetcode-c.sh'
 alias draw='$HOME/.config/my-scripts/draw/lets-draw.sh'
@@ -10,20 +12,24 @@ alias latexHw='~/.config/my-scripts/latex/latex-hw.sh'
 alias xmodmap='xmodmap ~/.config/X11/Xmodmap'
 alias maptohdmi='xrandr --output HDMI2 --auto'
 alias mdToPdf='~/.config/my-scripts/latex/mdToPdf.sh'
-alias flipTablet='xsetwacom set 13 Rotate half' # to flip tablet number 17 may vary
+alias flipTablet='xsetwacom set "$(xsetwacom list devices | grep STYLUS | awk '\''{print $9}'\'')" Rotate 3'
 #pabs stuff
 alias cdHw='source ~/hw/scripts/cd-current-week.sh'
 alias pabs-mkdir='source ~/hw/scripts/mkdir-java.sh'
 alias pabs-touch='source ~/hw/scripts/touch-java.sh'
 #alias to pipe into x clipboard
-alias clip='xclip -sel c'
+#alias clip='xclip -sel c'
 alias xournal='~/.config/xournalpp/xournalpp.sh'
+
+alias neofetchm='neofetch --ascii_distro linuxmint'
 
 
 # dont look there is some unholy emacs goin on
 export PATH="$HOME/.config/emacs/bin:$PATH"
 
-alias emacs="emacsclient -c -a 'nvim'"
+
+alias emacsServer="emacs --daemon"
+alias e="emacsclient -c -a 'nvim'"
 
 #ill go to hell for this probably
 #some other change
@@ -48,63 +54,14 @@ if [ ! -a ~/.inputrc ]; then
     echo 'set vi-cmd-mode-string \1\e[2 q\2' >> ~/.inputrc
 fi
 
-#lscolors
+#lscolor
 export LS_OPTIONS='--color=auto'
 eval "$(dircolors -b)"
 alias ls='ls $LS_OPTIONS'
 
 export FZF_DEFAULT_OPTS='--color=fg:#f8f8f2,hl:#bd93f9 --color=fg+:#f8f8f2,hl+:#bd93f9 --color=info:#ffb86c,prompt:#50fa7b,pointer:#ff79c6 --color=marker:#ff79c6,spinner:#ffb86c,header:#6272a4'
+source ~/.config/my-scripts/git-bashrc
 
 export PS1="\[\e[32m\]\`parse_git_branch\`\[\e[m\]\[\e[34m\]\w\[\e[m\] "
 
-
-
-
-#### only git stuff from here on
-# get current branch in git repo
-function parse_git_branch() {
-	BRANCH=`git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\1/'`
-	if [ ! "${BRANCH}" == "" ]
-	then
-		STAT=`parse_git_dirty`
-		echo "[${BRANCH}${STAT}]"
-	else
-		echo ""
-	fi
-}
-
-# get current status of git repo
-function parse_git_dirty {
-	status=`git status 2>&1 | tee`
-	dirty=`echo -n "${status}" 2> /dev/null | grep "modified:" &> /dev/null; echo "$?"`
-	untracked=`echo -n "${status}" 2> /dev/null | grep "Untracked files" &> /dev/null; echo "$?"`
-	ahead=`echo -n "${status}" 2> /dev/null | grep "Your branch is ahead of" &> /dev/null; echo "$?"`
-	newfile=`echo -n "${status}" 2> /dev/null | grep "new file:" &> /dev/null; echo "$?"`
-	renamed=`echo -n "${status}" 2> /dev/null | grep "renamed:" &> /dev/null; echo "$?"`
-	deleted=`echo -n "${status}" 2> /dev/null | grep "deleted:" &> /dev/null; echo "$?"`
-	bits=''
-	if [ "${renamed}" == "0" ]; then
-		bits=">${bits}"
-	fi
-	if [ "${ahead}" == "0" ]; then
-		bits="*${bits}"
-	fi
-	if [ "${newfile}" == "0" ]; then
-		bits="+${bits}"
-	fi
-	if [ "${untracked}" == "0" ]; then
-		bits="?${bits}"
-	fi
-	if [ "${deleted}" == "0" ]; then
-		bits="x${bits}"
-	fi
-	if [ "${dirty}" == "0" ]; then
-		bits="!${bits}"
-	fi
-	if [ ! "${bits}" == "" ]; then
-		echo " ${bits}"
-	else
-		echo ""
-	fi
-}
-
+. "$HOME/.cargo/env"

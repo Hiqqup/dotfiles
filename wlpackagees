@@ -6,6 +6,7 @@ ydotool
 waybar
 inotify-tools
 light
+libinput-config
 
 
 qutebrowser

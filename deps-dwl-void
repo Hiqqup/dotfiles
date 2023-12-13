@@ -1,0 +1,26 @@
+
+keyd 			#get the esc caps swap
+gcc
+git
+curl
+pkg-config
+wlroots0.17
+wlroots0.17-devel
+wayland-protocols
+wayland-devel
+seatd			#start service, add user to _seatd
+mesa-dri		#video driver 
+dbus			#start service, $ dbus-run-session dwl
+wl-clipboard
+
+
+#optional
+xtools
+htop
+vim
+foot
+tmux
+bemenu
+firefox			#i guess musl forced me into using firefox :(
+nerdfonts
+alsa-utils
