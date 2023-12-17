@@ -19,8 +19,6 @@ require("lazy").setup(
         require("plugins.telescope"),
         require("plugins.treesitter"),
         require("plugins.cmp"),
-        require("plugins.latex"),
-        require("plugins.dap"),
     },
     {
         defaults = {

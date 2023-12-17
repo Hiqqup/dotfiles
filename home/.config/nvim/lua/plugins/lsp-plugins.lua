@@ -6,7 +6,7 @@ return {
         dependencies = {
             "williamboman/mason.nvim",
             "williamboman/mason-lspconfig.nvim",
-            'nvim-tree/nvim-web-devicons',
+            --'nvim-tree/nvim-web-devicons',
             --snippets
         },
         config = function()
@@ -17,6 +17,9 @@ return {
     {
         'folke/neodev.nvim',
         ft = "lua",
+        config = function ()
+            require('neodev').setup()
+        end
     },
 
 }

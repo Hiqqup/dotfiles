@@ -1,5 +1,6 @@
 
 keyd 			#get the esc caps swap
+light
 gcc
 git
 curl
@@ -12,10 +13,10 @@ seatd			#start service, add user to _seatd
 mesa-dri		#video driver 
 dbus			#start service, $ dbus-run-session dwl
 wl-clipboard
+tpacpi-bat
 
 
 #optional
-xtools
 htop
 vim
 foot
@@ -24,3 +25,5 @@ bemenu
 firefox			#i guess musl forced me into using firefox :(
 nerdfonts
 alsa-utils
+xournalpp
+zathura

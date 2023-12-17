@@ -15,5 +15,7 @@ cp -r $HOME/.config/X11 home/.config
 cp -r $HOME/.config/zathura home/.config
 cp -r $HOME/.config/neofetch home/.config
 cp -r $HOME/.config/my-scripts home/.config
+cp -r $HOME/.config/sway home/.config
 cp -r /etc/X11/xorg.conf.d root/X11/
 cp /etc/profile.d/startx.sh root/etc/profile.d
+cp /etc/keyd/default.conf root/etc/keyd/default.conf
