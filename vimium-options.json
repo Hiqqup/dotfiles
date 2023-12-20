@@ -1,0 +1,14 @@
+{
+  "keyMappings": "# Insert your preferred key mappings here.\nmap l nextTab\nmap h previousTab\nmap <c-h> moveTabLeft\nmap <c-l> moveTabRight\nmap c enterCaretMode\nmap <c-b> togglePinTab\nunmap <c-e>\nunmap <c-y>\nunmap <a-p>\nunmap <a-m>\nmap <c-m> toggleMuteTab\nunmap K\nunmap J\nunmap gt\nunmap gT\nmap J scrollLeft\nmap K scrollRight\nunbind <<\nunbind >>\nmap wao closeOtherTabs\nmap war closeTabsOnRight\nmap wal closeTabsOnLeft",
+  "settingsVersion": "2.0.5",
+  "exclusionRules": [
+    {
+      "passKeys": "dw",
+      "pattern": "https?://127.0.0.1:37499/*"
+    },
+    {
+      "passKeys": "",
+      "pattern": "https?://localhost:8080/*"
+    }
+  ]
+}

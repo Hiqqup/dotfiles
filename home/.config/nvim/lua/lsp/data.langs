@@ -1,0 +1,15 @@
+return {
+"lua",
+"javascript",
+"sh",
+"typescript",
+"html",
+"c",
+"go",
+"java",
+"tex",
+"cpp",
+"asm",
+"make",
+"rust"
+}
