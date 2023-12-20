@@ -11,5 +11,4 @@ cp -r $HOME/.config/zathura home/.config
 cp -r $HOME/.config/my-scripts home/.config
 cp -r $HOME/.config/sway home/.config
 cp /etc/keyd/default.conf root/etc/keyd/default.conf
-cp /etc/sudoers root/etc/sudoers
 pacman -Qe > packages
