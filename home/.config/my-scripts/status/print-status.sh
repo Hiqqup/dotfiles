@@ -6,15 +6,14 @@ status() {
     printf "$delimiter"
 
     acpi| awk '{for(i=1;i<=NF;i++) if($i~/.*%.*/){print $i" "}}' | tr -d  ','
-    printf '\uF240'
+    printf ''
     printf "$delimiter"
     date +"%R"
-    printf ' \uF43A'
+    printf ' '
     printf "$delimiter"
     date +"%d.%m.%y"
-    printf ' \uF073 '
+    printf '  '
 
 }
-
 echo "$(status |tr -d '\n')"
 

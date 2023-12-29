@@ -8,9 +8,11 @@ vim.g.netrw_bufsettings = "noma nomod renu nobl nowrap ro nornu"
 vim.keymap.set('n', '<leader>e', "<cmd>Ex<CR>")
 
 vim.keymap.set("n", "<leader>rmc", "<cmd>call delete(expand('%'))<CR>")
-vim.keymap.set("n", "<leader>ltc", "<cmd>!pdflatex %<CR>")
-vim.keymap.set("n", "<leader>zto", "<cmd>!zathura %:r.pdf &<CR>")
 
+vim.cmd[[
+set foldmethod=syntax
+set foldmethod=manual
+]]
 
 -- tmux
 vim.keymap.set("n", "<leader>tnw", "<cmd>silent! !tmux new-window -c %:p:h<CR>")

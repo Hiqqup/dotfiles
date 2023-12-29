@@ -4,7 +4,7 @@ alias vi='/bin/vim'
 alias leetcode='source $HOME/.config/my-scripts/leetcode/leetcode-c.sh'
 alias donut='~/.config/my-scripts/donut'
 alias xournal='~/.config/xournalpp/xournalpp.sh'
-alias neofetch='neofetch --ascii_distro Ubuntu'
+alias neofetch='neofetch --ascii_distro Ubuntu --ascii_colors 4 --colors 4 4 4 4 --disable gpu'
 
 
 #some other change

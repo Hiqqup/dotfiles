@@ -8,6 +8,8 @@ set $red #ffffff
 set $grey #bd93f9
 set $dark_grey #21222c
 
+set $superuser sudo
+
 set $font JetBrainsMonoNLNerdFont
 set $font_size 13
 
@@ -17,7 +19,7 @@ set $up k
 set $right l
 #term and menu
 set $term foot
-set $menu bemenu-run bemenu-run --fn=$font","$font_size -H 28 --tf=$blue --hf=$grey --nf=$white --hp=10
+set $menu  bemenu-run --fn=$font","$font_size -H 28 --tf=$blue --hf=$grey --nf=$white --hp=10
 #keyboard layout 
 input type:keyboard {
 	xkb_layout de,de
@@ -28,7 +30,10 @@ input type:touchpad scroll_factor 0.15
 input type:touchpad natural_scroll enabled
 
 # Default wallpaper
-output eDP-1 bg #000000 solid_color
+#output eDP-1 bg #000000 solid_color
+output * bg #000000 solid_color
+#output HDMI-A-1 layout none mirror eDP-1
+
 ### Key bindings
 #
 # Basics:
@@ -54,6 +59,11 @@ output eDP-1 bg #000000 solid_color
 
     # Exit sway (logs you out of your Wayland session)
     bindsym $mod+Shift+q exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'
+
+#
+# Util;
+#
+    bindsym Mod4+Shift+s exec grim -g "$(slurp)" - |wl-copy
 #
 # Moving around:
 #
@@ -104,11 +114,14 @@ output eDP-1 bg #000000 solid_color
     bindsym $mod+Shift+9 move container to workspace number 9
     bindsym $mod+Shift+0 move container to workspace number 10
 
+    bindsym $mod+Ctrl+h move workspace to output left
+    bindsym $mod+Ctrl+l move workspace to output right
+
     #media keys
-    bindsym XF86MonBrightnessUp                 exec doas light -A 2
-    bindsym XF86MonBrightnessDown               exec doas light -U 2
-    bindsym Shift+XF86MonBrightnessDown         exec doas light -S 0.7
-    bindsym Shift+XF86MonBrightnessUp           exec doas light -S 100
+    bindsym XF86MonBrightnessUp                 exec $superuser light -A 2
+    bindsym XF86MonBrightnessDown               exec $superuser light -U 2
+    bindsym Shift+XF86MonBrightnessDown         exec $superuser light -S 0.7
+    bindsym Shift+XF86MonBrightnessUp           exec $superuser light -S 100
     bindsym XF86AudioRaiseVolume                exec amixer -q set Master 5%+
     bindsym XF86AudioLowerVolume                exec amixer -q set Master 5%-
     bindsym XF86AudioMute                       exec amixer -q set Master toggle
@@ -184,6 +197,7 @@ exec foot ~/.config/my-scripts/start-the-fun.sh
 
 #start rules
 assign [app_id="org.pwmt.zathura"] 2
+assign [app_id="qemu"] 4
 for_window [title="(?:Open|Save) (?:File|Folder|As)"] floating enable, resize set width 1030 height 710
 xwayland disable
 
@@ -195,7 +209,7 @@ default_border pixel 1
 client.focused  $black  $blue $black $blue 
 client.unfocused  $black $dark_grey  $white $black  
 
-font pango:$font $font_size
+font pango:$font 10
 
 
 # Read `man 5 sway-bar` for more information about this section.
