@@ -6,9 +6,9 @@ return {
     ]], { i(1), i(2), rep(1) })),
 
     s( "align", fmta( [[
-      \begin{align}
+      \begin{align*}
           <>
-      \end{align}
+      \end{align*}
     ]], { i(1) })),
     --inline math
     s( "il", fmta( "$<>$" , { i(1) })),

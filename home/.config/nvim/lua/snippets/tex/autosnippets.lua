@@ -42,7 +42,8 @@ return {
     math_autosnippet("&&", "\\land", { }), -- und
     math_autosnippet("sub", "\\subseteq", { }), -- teilmenge
     math_autosnippet("ng", "\\neg", { }), -- nicht
-    math_autosnippet("ll", "\\Longleftrightarrow", { }), -- nicht
+    math_autosnippet("llra", "\\Longleftrightarrow", { }), -- nicht
+    math_autosnippet("lra", "\\Longrightarrow", { }), -- nicht
     math_autosnippet("imp", "\\implies", { }), -- implikatoion
     math_autosnippet("to", "\\to", { }), -- to 
     math_autosnippet("mid", "\\mid", { }), -- mid 

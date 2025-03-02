@@ -6,7 +6,6 @@ return {
 "html",
 "c",
 "go",
-"java",
 "tex",
 "cpp",
 "asm",
