@@ -1,7 +1,0 @@
-set recolor   
-set recolor-lightcolor \#000000
-set recolor-keephue
-set default-bg \#21222c
-map = zoom in
-map 0 zoom 2
-
