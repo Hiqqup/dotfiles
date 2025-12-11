@@ -4,7 +4,7 @@ require("vanilla");
 ---
 GLOBAL_ensure_installed= { 
     "lua_ls",
-    "tsserver",
+    "ts_ls",
     "bashls",
     "html",
     "clangd",
