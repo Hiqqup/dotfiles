@@ -6,6 +6,7 @@ masonLsp.setup({
     automatic_enable= true,
     ensure_installed = GLOBAL_ensure_installed
 })
+vim.lsp.enable('gdscript')
 
 --- diagnostic keymaps
 vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, { desc = 'Go to previous diagnostic message' })

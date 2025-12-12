@@ -1,7 +1,6 @@
 
 require("vanilla");
 ---------------zoomer lsp_shit-------------------------------------------------------------
----
 GLOBAL_ensure_installed= { 
     "lua_ls",
     "ts_ls",
@@ -11,6 +10,7 @@ GLOBAL_ensure_installed= {
     --"gopls",
     "texlab",
     "rust_analyzer",
+    "neocmake",
 }
 GLOBAL_filetypes = {
     "lua",
@@ -24,6 +24,10 @@ GLOBAL_filetypes = {
     "cpp",
     "asm",
     "make",
-    "rust"
+    "rust",
+    "gdscript",
+    "gdshader",
+    "gdresource",
+    "cmake"
 }
 require("lazy-setup");
