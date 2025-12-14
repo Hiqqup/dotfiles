@@ -1,3 +1,12 @@
-ln -s ~/Documents/dotfiles/nvim ~/.config/nvim/
-ln -s ~/Documents/tmux.conf ~/.config/tmux/
-ln -s /home/ju/Documents/dotfiles/.bashrc /home/ju/
+
+DOTFILES_DIR=$HOME/code/dotfiles
+CONFIG_DIR=$HOME/.config
+
+rm -r $CONFIG_DIR/nvim
+ln -s $DOTFILES_DIR/nvim $CONFIG_DIR
+rm -fr $CONFIG_DIR/tmux
+mkdir -p $CONFIG_DIR/tmux
+ln -s $DOTFILES_DIR/tmux.conf $CONFIG_DIR/tmux
+rm $HOME/.bashrc
+ln -s $DOTFILES_DIR/.bashrc $HOME
+
