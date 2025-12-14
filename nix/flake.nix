@@ -20,7 +20,7 @@
             inherit system;
           };
 
-          modules = [
+          modules =    [({ pkgs, ... }:
             {
               home.username = username;
               home.homeDirectory = "/home/${username}";
@@ -32,7 +32,7 @@
                 pkgs.hello
               ];
             }
-          ];
+          )];
         };
     };
 }
