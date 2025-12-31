@@ -27,7 +27,7 @@ vim.keymap.set("n", "<C-k>", "<cmd>silent! !tmux select-pane -U<CR>")
 
 --this keeps the lsp from overwriting treesitter
 --vim.highlight.priorities.semantic_tokens = 99
-
+-- tab stuff:
 
 
 vim.cmd[[
@@ -94,3 +94,5 @@ vim.api.nvim_create_autocmd('TextYankPost', {
     group = highlight_group,
     pattern = '*',
 })
+
+
