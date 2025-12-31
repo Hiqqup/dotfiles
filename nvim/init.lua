@@ -10,9 +10,11 @@ GLOBAL_ensure_installed= {
     --"gopls",
     "texlab",
     "rust_analyzer",
+    "java_language_server",
     "neocmake",
 }
 GLOBAL_filetypes = {
+    "java",
     "lua",
     "javascript",
     "sh",
