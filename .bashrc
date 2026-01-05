@@ -13,8 +13,10 @@ shopt -s autocd
 export VISUAL=nvim
 export EDITOR=nvim
 
+bind "set completion-ignore-case on"
+
 #case insensitive autocompletion and vim cursor
-if [ ! -a ~/.inputrc ]; then 
+if [ ! -f ~/.inputrc ]; then
     echo '$include /etc/inputrc' >> ~/.inputrc
     echo 'set completion-ignore-case On' >> ~/.inputrc
     echo 'set editing-mode vi' >> ~/.inputrc

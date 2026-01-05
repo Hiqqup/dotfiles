@@ -6,3 +6,6 @@ elpa
 init.el~
 tutorial
 vim
+eshell
+init.elc
+transient
