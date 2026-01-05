@@ -5,8 +5,6 @@
 
 
 (set-face-attribute 'default nil :height 150)
-(setq read-file-name-completion-ignore-case t)
-(setq eshell-cmpl-ignore-case t)
  
 
 ;; keybindings
@@ -59,3 +57,7 @@
 
 (set-face-attribute 'default nil
                     :background "black")
+
+;; path completion
+(setq read-file-name-completion-ignore-case t)
+(setq eshell-cmpl-ignore-case t)
