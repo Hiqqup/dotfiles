@@ -9,3 +9,4 @@ vim
 eshell
 init.elc
 transient
+backups

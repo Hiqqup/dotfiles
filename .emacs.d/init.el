@@ -33,19 +33,14 @@
 (package-initialize)
 
 ;; evil
-(unless (package-installed-p 'evil)
-  (package-install 'evil))
 
 (setq evil-undo-system 'undo-redo)
 (setq evil-want-keybinding nil)
 
-(require 'evil)
-(evil-mode 1)
-
-
 (unless (package-installed-p 'evil-collection)
   (package-install 'evil-collection))
-
+(require 'evil)
+(evil-mode 1)
 (require 'evil-collection)
 (evil-collection-init) 
 
@@ -55,7 +50,9 @@
   (package-install 'corfu))
 
 (require 'corfu)
+
 (global-corfu-mode)
+(add-hook 'eshell-mode-hook (lambda () (corfu-mode -1)))
 
 (setq corfu-auto t)
 (setq corfu-auto-delay 0)
@@ -80,3 +77,20 @@
 ;; path completion
 (setq read-file-name-completion-ignore-case t)
 (setq eshell-cmpl-ignore-case t)
+(setq read-buffer-completion-ignore-case t)
+
+;; tweak eglot
+
+(setq eldoc-echo-area-use-multiline-p nil)
+
+;; backups
+
+(setq backup-directory-alist
+      '(("." . "~/.emacs.d/backups")))
+
+(setq version-control t    
+      kept-new-versions 10
+      kept-old-versions 2
+      delete-old-versions t)
+
+(setq enable-recursive-minibuffers t) ; fix bottom bar getting stuck
