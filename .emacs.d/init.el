@@ -9,7 +9,7 @@
 
 ;; keybindings
 (global-set-key (kbd "C-c o") #'ff-find-other-file)
-(global-set-key (kbd "C-c c") #'compile)
+(global-set-key (kbd "C-c p") #'compile)
 
 ;; default theme fallback
 (load-theme 'tango-dark)
@@ -37,6 +37,7 @@
   (package-install 'evil))
 
 (setq evil-undo-system 'undo-redo)
+(setq evil-want-keybinding nil)
 
 (require 'evil)
 (evil-mode 1)
@@ -48,13 +49,31 @@
 (require 'evil-collection)
 (evil-collection-init) 
 
+;; corfu
+
+(unless (package-installed-p 'corfu)
+  (package-install 'corfu))
+
+(require 'corfu)
+(global-corfu-mode)
+
+(setq corfu-auto t)
+(setq corfu-auto-delay 0)
+(setq corfu-auto-prefix 1)
+(setq global-corfu-minibuffer nil) ;; disable corfu in evil command line
+
+;; magit
+
+(unless (package-installed-p 'magit)
+  (package-install 'magit))
+
+(require 'magit)
 
 ;; dracula
 (unless (package-installed-p 'dracula-theme)
   (package-install 'dracula-theme))
 
 (load-theme 'dracula t)
-
 (set-face-attribute 'default nil
                     :background "black")
 
