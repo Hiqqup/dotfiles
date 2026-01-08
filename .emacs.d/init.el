@@ -1,3 +1,8 @@
+(unless (and (>= emacs-major-version 29)
+             (= emacs-minor-version 3))
+ (error "This config requires Emacs 29.3"))
+
+
 (tool-bar-mode 0)
 (menu-bar-mode 0)
 (scroll-bar-mode 0)
