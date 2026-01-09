@@ -33,17 +33,26 @@
 
 (setq custom-file "~/.emacs.d/custom.el")
 
-(require 'package)
-(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/"))
-(package-initialize)
+(defvar bootstrap-version)
+(let ((bootstrap-file
+       (expand-file-name "straight/repos/straight.el/bootstrap.el" user-emacs-directory))
+      (bootstrap-version 6))
+  (unless (file-exists-p bootstrap-file)
+    (with-current-buffer
+        (url-retrieve-synchronously
+         "https://raw.githubusercontent.com/radian-software/straight.el/develop/install.el"
+         'silent 'inhibit-cookies)
+      (goto-char (point-max))
+      (eval-print-last-sexp)))
+  (load bootstrap-file nil 'nomessage))
+
 
 ;; evil
 
 (setq evil-undo-system 'undo-redo)
 (setq evil-want-keybinding nil)
 
-(unless (package-installed-p 'evil-collection)
-  (package-install 'evil-collection))
+(straight-use-package 'evil-collection)
 (require 'evil)
 (evil-mode 1)
 (require 'evil-collection)
@@ -51,8 +60,7 @@
 
 ;; corfu
 
-(unless (package-installed-p 'corfu)
-  (package-install 'corfu))
+(straight-use-package 'corfu)
 
 (require 'corfu)
 
@@ -66,14 +74,12 @@
 
 ;; magit
 
-(unless (package-installed-p 'magit)
-  (package-install 'magit))
+(straight-use-package 'magit)
 
 (require 'magit)
 
 ;; dracula
-(unless (package-installed-p 'dracula-theme)
-  (package-install 'dracula-theme))
+(straight-use-package 'dracula-theme)
 
 (load-theme 'dracula t)
 (set-face-attribute 'default nil

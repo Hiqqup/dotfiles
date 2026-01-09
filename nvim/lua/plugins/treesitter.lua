@@ -1,6 +1,7 @@
 return {
     "nvim-treesitter/nvim-treesitter",
     ft = GLOBAL_filetypes,
+    commit = "42fc28ba918343ebfd5565147a42a26580579482",
     config = function()
         local configs = require("nvim-treesitter.configs")
 

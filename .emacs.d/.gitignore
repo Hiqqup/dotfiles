@@ -10,3 +10,6 @@ eshell
 init.elc
 transient
 backups
+straight/*
+!straight/versions/
+!straight/versions/default.el
