@@ -105,3 +105,7 @@
       delete-old-versions t)
 
 (setq enable-recursive-minibuffers t) ; fix bottom bar getting stuck
+
+;; gdscript mode
+
+(straight-use-package 'gdscript-mode);
