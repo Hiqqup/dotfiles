@@ -12,6 +12,7 @@ fi
 # Start GUI client if not already running
 if ! wmctrl -l | grep -q "$TITLE"; then
     emacsclient -c -n --eval "
+    (add-hook 'gdscript-mode-hook #'eglot-ensure)
     (let ((f (selected-frame)))
       (set-frame-parameter f 'name \"$TITLE\")
       (set-frame-position f 280 140)
