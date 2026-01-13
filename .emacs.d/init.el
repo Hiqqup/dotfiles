@@ -1,7 +1,9 @@
+
 (unless (and (>= emacs-major-version 29)
              (= emacs-minor-version 3))
  (error "This config requires Emacs 29.3"))
 
+(setq visible-bell t)
 
 (tool-bar-mode 0)
 (menu-bar-mode 0)
@@ -9,8 +11,7 @@
 (column-number-mode 1)
 
 
-(set-face-attribute 'default nil :height 150)
- 
+(set-frame-font "Consolas-15" nil t)
 
 ;; keybindings
 (global-set-key (kbd "C-c o") #'ff-find-other-file)
@@ -109,3 +110,4 @@
 ;; gdscript mode
 
 (straight-use-package 'gdscript-mode);
+
