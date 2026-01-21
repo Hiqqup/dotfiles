@@ -1,36 +1,24 @@
+vim.cmd([[set shada+=!]])-- restore marks after closing
 
-require("vanilla");
----------------zoomer lsp_shit-------------------------------------------------------------
-GLOBAL_ensure_installed= { 
-    "lua_ls",
-    "ts_ls",
-    "bashls",
-    "html",
-    "clangd",
-    --"gopls",
-    "texlab",
-    "rust_analyzer",
-    "java_language_server",
-    "neocmake",
-}
-GLOBAL_filetypes = {
-    "java",
-    "lua",
-    "javascript",
-    "sh",
-    "typescript",
-    "html",
-    "c",
-    "go",
-    "tex",
-    "cpp",
-    "asm",
-    "make",
-    "rust",
-    "gdscript",
-    "gdshader",
-    "gdresource",
-    "cmake"
-}
-require("lazy-setup");
+vim.opt.signcolumn="yes" -- warning col for sanity
 
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = { "c", "cpp", "objc", "objcpp" },
+  callback = function()
+    vim.lsp.start({
+      name = "clangd",
+      cmd = { "clangd" },
+      root_dir = vim.fs.root(0, {
+        "compile_commands.json",
+        "compile_flags.txt",
+        ".git",
+      }),
+    })
+  end,
+})
+
+vim.api.nvim_create_autocmd("LspAttach", {
+  callback = function(args)
+    vim.bo[args.buf].omnifunc = "v:lua.vim.lsp.omnifunc"
+  end,
+})
