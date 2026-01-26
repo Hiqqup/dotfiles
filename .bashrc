@@ -81,3 +81,6 @@ export PS1="\[\e[32m\]\`parse_git_branch\`\[\e[m\]\[\e[34m\]\w\[\e[m\] "
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+[ -f "/home/ju/.ghcup/env" ] && . "/home/ju/.ghcup/env" # ghcup-env
+. "$HOME/.cargo/env"
