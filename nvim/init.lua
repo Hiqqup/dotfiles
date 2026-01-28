@@ -49,10 +49,3 @@ vim.api.nvim_create_autocmd("LspAttach", {
   end,
 })
 
---- nonsense  ------------------------------------------------------
-vim.cmd[[
-  let g:neovide_cursor_animation_length = 0
-  let g:neovide_cursor_trail_size = 0
-  if exists('g:neovide') | colorscheme dracula | endif
-  let g:neovide_scale_factor = 1.2
-]]
