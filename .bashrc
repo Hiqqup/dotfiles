@@ -84,3 +84,5 @@ export NVM_DIR="$HOME/.nvm"
 
 [ -f "/home/ju/.ghcup/env" ] && . "/home/ju/.ghcup/env" # ghcup-env
 . "$HOME/.cargo/env"
+
+PATH="$HOME/.nix-profile/bin:$PATH"

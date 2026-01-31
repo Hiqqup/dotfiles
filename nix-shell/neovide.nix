@@ -1,6 +1,14 @@
-let pinnedPkgs = import (builtins.fetchTarball {
-        url = "https://github.com/NixOS/nixpkgs/archive/3e3f3c7f9977dc123c23ee21e8085ed63daf8c37.tar.gz";
-        }) {};
+let
+localPath = "/nix/store/k3h9ghq4hbs59rynsqpj018fz6f1yzkq-source/";
+pinnedPkgs =
+	if builtins.pathExists localPath then
+		import localPath {}
+	else
+		 builtins.trace "fetching nixpkgs from github" 2
+		import (builtins.fetchTarball {
+			url = "https://github.com/NixOS/nixpkgs/archive/3e3f3c7f9977dc123c23ee21e8085ed63daf8c37.tar.gz";
+			sha256 = "0jnmv6gpzhqb0jyhj7qi7vjfwbn4cqs5blm5xia7q5i0ma2bbkcd";
+		}) {};
 
 neovideAppImage = pinnedPkgs.stdenv.mkDerivation {
     pname = "neovide-appimage";
@@ -48,7 +56,6 @@ myNeovim = pinnedPkgs.neovim.override {
 };
 
 in
-
     
 pinnedPkgs.mkShell {
     buildInputs = [
