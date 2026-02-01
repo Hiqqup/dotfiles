@@ -4,7 +4,6 @@ pinnedPkgs =
 	if builtins.pathExists localPath then
 		import localPath {}
 	else
-		 builtins.trace "fetching nixpkgs from github" 2
 		import (builtins.fetchTarball {
 			url = "https://github.com/NixOS/nixpkgs/archive/3e3f3c7f9977dc123c23ee21e8085ed63daf8c37.tar.gz";
 			sha256 = "0jnmv6gpzhqb0jyhj7qi7vjfwbn4cqs5blm5xia7q5i0ma2bbkcd";
@@ -42,14 +41,25 @@ myNeovim = pinnedPkgs.neovim.override {
     ];
     customRC = ''
     lua << EOF
+      --- source preexisting conf ------------------------------------
       local user_init = vim.fn.stdpath("config") .. "/init.lua"
       if vim.fn.filereadable(user_init) == 1 then
         dofile(user_init)
       end
+
+      --- visual adjustments  ----------------------------------------
       vim.g.neovide_cursor_animation_length = 0
       vim.g.neovide_cursor_trail_size = 0
-      vim.g.neovide_scale_factor = 0.8
+      vim.g.neovide_scale_factor = 1.11
       vim.cmd.colorscheme("dracula")
+
+      --- change font size  ------------------------------------------
+      vim.keymap.set('n', '<C-=>', function()
+        vim.g.neovide_scale_factor = vim.g.neovide_scale_factor + 0.1
+      end)
+      vim.keymap.set('n', '<C-->', function()
+        vim.g.neovide_scale_factor = vim.g.neovide_scale_factor - 0.1
+      end)
     EOF
     '';
   };
@@ -64,6 +74,11 @@ pinnedPkgs.mkShell {
 	pinnedPkgs.llvmPackages_18.clang-tools
 	pinnedPkgs.ripgrep
     ];
+
+  shellHook = ''
+    export TERM=xterm-256color
+    export WINIT_X11_SCALE_FACTOR=1.0
+  '';
 }
 
 

@@ -1,4 +1,4 @@
-vim.cmd([[set shada+=!]])--- restore marks after closing
+-- vim.cmd([[set shada+=!]])--- restore marks after closing
 
 vim.opt.signcolumn="yes" --- warning col for sanity
 
