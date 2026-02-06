@@ -146,6 +146,7 @@ in
       };
       initExtra = ''
         set -o vi
+	bind 'set completion-ignore-case on'
       '';
       sessionVariables = {
 	    EDITOR = "nvim";
@@ -185,6 +186,7 @@ in
 	};
 
 	"org/gnome/shell/app-switcher" ={current-workspace-only  = true;};
+	"org/gnome/desktop/peripherals/touchpad" = { click-method =  "areas";};
 
     };
 
@@ -202,9 +204,10 @@ in
   #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
   #  wget
      wl-clipboard
-     neovim
+     libinput
      git
      unzip
+     neovim
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
