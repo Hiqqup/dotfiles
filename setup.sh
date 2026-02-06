@@ -12,3 +12,7 @@ ln -s $DOTFILES_DIR/.emacs.d $HOME
 #rm $HOME/.bashrc
 #ln -s $DOTFILES_DIR/.bashrc $HOME
 
+
+ln -s /home/ju/Documents/dotfiles/nixos/configuration.nix /home/ju/.configuration.nix
+
+sudo ln -s /home/ju/.configuration.nix /etc/nixos/configuration.nix
