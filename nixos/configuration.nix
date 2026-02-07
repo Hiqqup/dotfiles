@@ -119,6 +119,8 @@ in
 
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
+  # Allow unfree packages
+  nixpkgs.config.allowUnfree = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.ju = {
@@ -132,12 +134,15 @@ in
 
   home-manager.backupFileExtension = "backup";
   home-manager.users.ju = { pkgs, ... }: {
+
+    nixpkgs.config.allowUnfree = true;
     home.packages = [ 
       pkgs.neovide
       myNeovim
       pkgs.neofetch
       pkgs.oath-toolkit
       pkgs.lazygit
+      pkgs.jetbrains.idea-ultimate
     ];
     programs.bash = {
       enable = true;
@@ -187,6 +192,9 @@ in
 
 	"org/gnome/shell/app-switcher" ={current-workspace-only  = true;};
 	"org/gnome/desktop/peripherals/touchpad" = { click-method =  "areas";};
+	"org/gnome/shell" = {
+		favorite-apps = [];
+	};
 
     };
 
@@ -195,8 +203,6 @@ in
   # Install firefox.
   programs.firefox.enable = true;
 
-  # Allow unfree packages
-  nixpkgs.config.allowUnfree = true;
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
